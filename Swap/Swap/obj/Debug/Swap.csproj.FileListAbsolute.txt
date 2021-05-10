@@ -13,3 +13,4 @@ C:\Users\Kağan Can Şit\Desktop\Swap\Software\Swap\Swap\obj\Debug\Swap.exe
 C:\Users\Kağan Can Şit\Desktop\Swap\Software\Swap\Swap\obj\Debug\Swap.pdb
 C:\Users\Kağan Can Şit\Desktop\Swap\Software\Swap\Swap\obj\Debug\Swap.Register.resources
 C:\Users\Kağan Can Şit\Desktop\Swap\Software\Swap\Swap\obj\Debug\Swap.MainMenu.resources
+C:\Users\Kağan Can Şit\Desktop\Swap\Software\Swap\Swap\obj\Debug\Swap.AdminForm.resources
