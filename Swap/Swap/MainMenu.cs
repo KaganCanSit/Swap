@@ -31,7 +31,7 @@ namespace Swap
         private void ParaEkleButton_Click(object sender, EventArgs e)
         {
             //Değerlerin Boş Girilmesi Durumunda Uyarı Vermesini Sağlıyoruz.
-            if (ParaEkleTB.Text == "" )
+            if (ParaEkleTB.Text == "")
             {
                 MessageBox.Show("Değerlerden Birini Veya Birkaçı Boş Bıraktınız. Kontrol Ediniz.");
             }
@@ -46,6 +46,8 @@ namespace Swap
             }
         }
 
+        public int UrunID;
+       
         private void UrunEkleButton_Click(object sender, EventArgs e)
         {
             if (UrunlerCB.Text == "" || UrunMiktariTB.Text == "" || SatisTutariTB.Text == "")
@@ -55,7 +57,17 @@ namespace Swap
             else
             {
                 SqlCommand komut = new SqlCommand("insert into UrunOnay(UrunID,Miktar(kg),SatisFiyati)" + "values(@p1,@p2,@p3)", baglanti.baglanti());
-                komut.Parameters.AddWithValue("@p1", UrunlerCB.Text);
+                
+                if(UrunlerCB.Text=="Armut")
+                    UrunID = 1;
+                else if(UrunlerCB.Text == "Elma")
+                    UrunID = 2;
+                else if (UrunlerCB.Text == "Muz")
+                    UrunID = 3;
+                else if (UrunlerCB.Text == "Çilek")
+                    UrunID = 4;
+                
+                komut.Parameters.AddWithValue("@p1", UrunID);
                 komut.Parameters.AddWithValue("@p2", UrunMiktariTB.Text);
                 komut.Parameters.AddWithValue("@p3", SatisTutariTB.Text);
                 komut.ExecuteNonQuery();
@@ -110,11 +122,6 @@ namespace Swap
             MoneyGB.Visible = false;
             UrunEkleGB.Visible = false;
             BilgiLabel.Visible = false;
-        }
-
-        private void SatinAlBtn_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

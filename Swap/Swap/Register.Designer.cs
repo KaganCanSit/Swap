@@ -238,7 +238,7 @@ namespace Swap
             this.BasvuruButton.Location = new System.Drawing.Point(455, 222);
             this.BasvuruButton.Margin = new System.Windows.Forms.Padding(5);
             this.BasvuruButton.Name = "BasvuruButton";
-            this.BasvuruButton.Size = new System.Drawing.Size(111, 28);
+            this.BasvuruButton.Size = new System.Drawing.Size(111, 34);
             this.BasvuruButton.TabIndex = 24;
             this.BasvuruButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BasvuruButton.Click += new System.EventHandler(this.BasvuruButton_Click);

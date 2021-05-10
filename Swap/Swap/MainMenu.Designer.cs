@@ -52,16 +52,17 @@ namespace Swap
             this.label3 = new System.Windows.Forms.Label();
             this.BilgiLabel = new System.Windows.Forms.Label();
             this.FinanceGroupBox = new System.Windows.Forms.GroupBox();
+            this.FinanceDataGrid = new System.Windows.Forms.DataGridView();
+            this.UrunCB = new System.Windows.Forms.ComboBox();
             this.FinanceLabel = new System.Windows.Forms.Label();
             this.GoruntuleButton = new System.Windows.Forms.Button();
-            this.UrunCB = new System.Windows.Forms.ComboBox();
-            this.FinanceDataGrid = new System.Windows.Forms.DataGridView();
             this.UrunSatinAlGB = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SatinAlBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.ParaLabel = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -76,6 +77,7 @@ namespace Swap
             // 
             this.MenuPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MenuPanel.BackgroundImage")));
             this.MenuPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MenuPanel.Controls.Add(this.ParaLabel);
             this.MenuPanel.Controls.Add(this.pictureBox2);
             this.MenuPanel.Controls.Add(this.MoneyLabel);
             this.MenuPanel.Controls.Add(this.BuyButton);
@@ -114,9 +116,9 @@ namespace Swap
             this.MoneyLabel.Location = new System.Drawing.Point(9, 129);
             this.MoneyLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MoneyLabel.Name = "MoneyLabel";
-            this.MoneyLabel.Size = new System.Drawing.Size(190, 17);
+            this.MoneyLabel.Size = new System.Drawing.Size(54, 17);
             this.MoneyLabel.TabIndex = 1;
-            this.MoneyLabel.Text = "Bakiye: Henüz Onaylanmadı.";
+            this.MoneyLabel.Text = "Bakiye:";
             // 
             // BuyButton
             // 
@@ -362,13 +364,34 @@ namespace Swap
             this.FinanceGroupBox.Controls.Add(this.UrunCB);
             this.FinanceGroupBox.Controls.Add(this.FinanceLabel);
             this.FinanceGroupBox.Controls.Add(this.GoruntuleButton);
-            this.FinanceGroupBox.Location = new System.Drawing.Point(207, 20);
+            this.FinanceGroupBox.Location = new System.Drawing.Point(207, 25);
             this.FinanceGroupBox.Name = "FinanceGroupBox";
             this.FinanceGroupBox.Size = new System.Drawing.Size(677, 191);
             this.FinanceGroupBox.TabIndex = 5;
             this.FinanceGroupBox.TabStop = false;
             this.FinanceGroupBox.Text = "Borsa Durumu";
             this.FinanceGroupBox.Visible = false;
+            // 
+            // FinanceDataGrid
+            // 
+            this.FinanceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FinanceDataGrid.Location = new System.Drawing.Point(245, 19);
+            this.FinanceDataGrid.Name = "FinanceDataGrid";
+            this.FinanceDataGrid.Size = new System.Drawing.Size(426, 160);
+            this.FinanceDataGrid.TabIndex = 13;
+            // 
+            // UrunCB
+            // 
+            this.UrunCB.FormattingEnabled = true;
+            this.UrunCB.Items.AddRange(new object[] {
+            "Armut",
+            "Elma",
+            "Muz",
+            "Çilek"});
+            this.UrunCB.Location = new System.Drawing.Point(58, 90);
+            this.UrunCB.Name = "UrunCB";
+            this.UrunCB.Size = new System.Drawing.Size(121, 21);
+            this.UrunCB.TabIndex = 11;
             // 
             // FinanceLabel
             // 
@@ -390,27 +413,6 @@ namespace Swap
             this.GoruntuleButton.UseVisualStyleBackColor = true;
             this.GoruntuleButton.Click += new System.EventHandler(this.GoruntuleButton_Click);
             // 
-            // UrunCB
-            // 
-            this.UrunCB.FormattingEnabled = true;
-            this.UrunCB.Items.AddRange(new object[] {
-            "Armut",
-            "Elma",
-            "Muz",
-            "Çilek"});
-            this.UrunCB.Location = new System.Drawing.Point(58, 90);
-            this.UrunCB.Name = "UrunCB";
-            this.UrunCB.Size = new System.Drawing.Size(121, 21);
-            this.UrunCB.TabIndex = 11;
-            // 
-            // FinanceDataGrid
-            // 
-            this.FinanceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FinanceDataGrid.Location = new System.Drawing.Point(245, 19);
-            this.FinanceDataGrid.Name = "FinanceDataGrid";
-            this.FinanceDataGrid.Size = new System.Drawing.Size(426, 160);
-            this.FinanceDataGrid.TabIndex = 13;
-            // 
             // UrunSatinAlGB
             // 
             this.UrunSatinAlGB.Controls.Add(this.label8);
@@ -425,6 +427,23 @@ namespace Swap
             this.UrunSatinAlGB.TabStop = false;
             this.UrunSatinAlGB.Text = "Ürün Satın Al";
             this.UrunSatinAlGB.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(246, 113);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(141, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Almak İstediginiz Miktar(KG):";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(255, 134);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(121, 20);
+            this.textBox1.TabIndex = 14;
             // 
             // comboBox1
             // 
@@ -457,24 +476,19 @@ namespace Swap
             this.SatinAlBtn.TabIndex = 1;
             this.SatinAlBtn.Text = "Satın Al";
             this.SatinAlBtn.UseVisualStyleBackColor = true;
-            this.SatinAlBtn.Click += new System.EventHandler(this.SatinAlBtn_Click);
             // 
-            // textBox1
+            // ParaLabel
             // 
-            this.textBox1.Location = new System.Drawing.Point(255, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 14;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(246, 113);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(141, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Almak İstediginiz Miktar(KG):";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ParaLabel.AutoSize = true;
+            this.ParaLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ParaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ParaLabel.ForeColor = System.Drawing.Color.White;
+            this.ParaLabel.Location = new System.Drawing.Point(67, 129);
+            this.ParaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ParaLabel.Name = "ParaLabel";
+            this.ParaLabel.Size = new System.Drawing.Size(24, 17);
+            this.ParaLabel.TabIndex = 6;
+            this.ParaLabel.Text = "00";
             // 
             // MainMenu
             // 
@@ -546,5 +560,6 @@ namespace Swap
         private System.Windows.Forms.Button SatinAlBtn;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label ParaLabel;
     }
 }
