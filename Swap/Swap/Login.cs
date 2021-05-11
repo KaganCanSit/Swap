@@ -21,11 +21,13 @@ namespace Swap
         //Oluşturduğumuz Database Sınıfı Aracılığıyla Database'den Veri Alıyoruz.
         SQLBaglantisi baglanti = new SQLBaglantisi();
         SqlCommand komut;
-
+        
+        public static int UserId;
+        public static int ParaMik;
         //Kullanıcının Adı, Soyadı, Kullanıcı Tipi Kontrolü Ve Girişi
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            komut = new SqlCommand("Select * From Kullanicilar where KullaniciTuru=@p3 and KullaniciAdi=@p4 and Şifre=@p5", baglanti.baglanti());
+            komut = new SqlCommand("Select KullaniciID, ParaMiktari From Kullanicilar where KullaniciTuru=@p3 and KullaniciAdi=@p4 and Şifre=@p5", baglanti.baglanti());
             komut.Parameters.AddWithValue("@p3", UserTypeComboBox.Text);
             komut.Parameters.AddWithValue("@p4", NameTextBox.Text);
             komut.Parameters.AddWithValue("@p5", PassTextBox.Text);
@@ -33,16 +35,21 @@ namespace Swap
             SqlDataReader dr = komut.ExecuteReader();
             if (dr.Read())
             {
+                UserId = int.Parse(dr[0].ToString());
+                
+
                 //Kullanıcı Girişi Yetkisine Göre İşlem Yapacağı Forma İletiyoruz. 
                 if (UserTypeComboBox.Text == "Kullanici")
                 {
                     MainMenu MainMenu = new MainMenu();
+                    MainMenu.ParaLabel.Text = (dr[1].ToString());
                     MainMenu.Show();
                     this.Hide();
                 }
                 else if (UserTypeComboBox.Text == "Admin")
                 {
                     AdminForm adminForm = new AdminForm();
+                  //  adminForm.ParaLabel.Text = (dr[1].ToString());
                     adminForm.Show();
                     this.Hide(); ;
                 }

@@ -57,7 +57,7 @@ namespace Swap
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(52, 68);
+            this.label1.Location = new System.Drawing.Point(12, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 15);
             this.label1.TabIndex = 3;
@@ -68,7 +68,7 @@ namespace Swap
             this.Baslik.AutoSize = true;
             this.Baslik.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Baslik.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Baslik.Location = new System.Drawing.Point(171, 19);
+            this.Baslik.Location = new System.Drawing.Point(129, 16);
             this.Baslik.Name = "Baslik";
             this.Baslik.Size = new System.Drawing.Size(338, 20);
             this.Baslik.TabIndex = 4;
@@ -76,14 +76,14 @@ namespace Swap
             // 
             // AdTB
             // 
-            this.AdTB.Location = new System.Drawing.Point(158, 67);
+            this.AdTB.Location = new System.Drawing.Point(118, 44);
             this.AdTB.Name = "AdTB";
             this.AdTB.Size = new System.Drawing.Size(129, 20);
             this.AdTB.TabIndex = 5;
             // 
             // SoyadTB
             // 
-            this.SoyadTB.Location = new System.Drawing.Point(158, 93);
+            this.SoyadTB.Location = new System.Drawing.Point(118, 70);
             this.SoyadTB.Name = "SoyadTB";
             this.SoyadTB.Size = new System.Drawing.Size(129, 20);
             this.SoyadTB.TabIndex = 7;
@@ -92,7 +92,7 @@ namespace Swap
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(52, 94);
+            this.label2.Location = new System.Drawing.Point(12, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 15);
             this.label2.TabIndex = 6;
@@ -100,7 +100,7 @@ namespace Swap
             // 
             // KullaniciAdiTB
             // 
-            this.KullaniciAdiTB.Location = new System.Drawing.Point(445, 140);
+            this.KullaniciAdiTB.Location = new System.Drawing.Point(405, 117);
             this.KullaniciAdiTB.Name = "KullaniciAdiTB";
             this.KullaniciAdiTB.Size = new System.Drawing.Size(129, 20);
             this.KullaniciAdiTB.TabIndex = 9;
@@ -109,7 +109,7 @@ namespace Swap
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(339, 139);
+            this.label3.Location = new System.Drawing.Point(299, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 8;
@@ -117,7 +117,7 @@ namespace Swap
             // 
             // KullaniciSifreTB
             // 
-            this.KullaniciSifreTB.Location = new System.Drawing.Point(445, 166);
+            this.KullaniciSifreTB.Location = new System.Drawing.Point(405, 143);
             this.KullaniciSifreTB.Name = "KullaniciSifreTB";
             this.KullaniciSifreTB.Size = new System.Drawing.Size(129, 20);
             this.KullaniciSifreTB.TabIndex = 11;
@@ -126,7 +126,7 @@ namespace Swap
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(339, 167);
+            this.label4.Location = new System.Drawing.Point(299, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 15);
             this.label4.TabIndex = 10;
@@ -134,7 +134,7 @@ namespace Swap
             // 
             // TCTB
             // 
-            this.TCTB.Location = new System.Drawing.Point(158, 119);
+            this.TCTB.Location = new System.Drawing.Point(118, 96);
             this.TCTB.Name = "TCTB";
             this.TCTB.Size = new System.Drawing.Size(129, 20);
             this.TCTB.TabIndex = 13;
@@ -143,7 +143,7 @@ namespace Swap
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(52, 120);
+            this.label5.Location = new System.Drawing.Point(12, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 15);
             this.label5.TabIndex = 12;
@@ -151,7 +151,7 @@ namespace Swap
             // 
             // TelTB
             // 
-            this.TelTB.Location = new System.Drawing.Point(158, 145);
+            this.TelTB.Location = new System.Drawing.Point(118, 122);
             this.TelTB.Name = "TelTB";
             this.TelTB.Size = new System.Drawing.Size(129, 20);
             this.TelTB.TabIndex = 15;
@@ -160,7 +160,7 @@ namespace Swap
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(52, 146);
+            this.label6.Location = new System.Drawing.Point(12, 123);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 15);
             this.label6.TabIndex = 14;
@@ -168,7 +168,7 @@ namespace Swap
             // 
             // MailTB
             // 
-            this.MailTB.Location = new System.Drawing.Point(158, 171);
+            this.MailTB.Location = new System.Drawing.Point(118, 148);
             this.MailTB.Name = "MailTB";
             this.MailTB.Size = new System.Drawing.Size(129, 20);
             this.MailTB.TabIndex = 17;
@@ -177,7 +177,7 @@ namespace Swap
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(52, 175);
+            this.label7.Location = new System.Drawing.Point(12, 152);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 15);
             this.label7.TabIndex = 16;
@@ -185,7 +185,7 @@ namespace Swap
             // 
             // IlTB
             // 
-            this.IlTB.Location = new System.Drawing.Point(158, 197);
+            this.IlTB.Location = new System.Drawing.Point(118, 174);
             this.IlTB.Name = "IlTB";
             this.IlTB.Size = new System.Drawing.Size(129, 20);
             this.IlTB.TabIndex = 19;
@@ -194,7 +194,7 @@ namespace Swap
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(52, 198);
+            this.label8.Location = new System.Drawing.Point(12, 175);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(16, 15);
             this.label8.TabIndex = 18;
@@ -202,7 +202,7 @@ namespace Swap
             // 
             // IlceTB
             // 
-            this.IlceTB.Location = new System.Drawing.Point(158, 223);
+            this.IlceTB.Location = new System.Drawing.Point(118, 200);
             this.IlceTB.Name = "IlceTB";
             this.IlceTB.Size = new System.Drawing.Size(129, 20);
             this.IlceTB.TabIndex = 21;
@@ -211,7 +211,7 @@ namespace Swap
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label9.Location = new System.Drawing.Point(52, 224);
+            this.label9.Location = new System.Drawing.Point(12, 201);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 15);
             this.label9.TabIndex = 20;
@@ -235,7 +235,7 @@ namespace Swap
             this.BasvuruButton.IdleFillColor = System.Drawing.Color.White;
             this.BasvuruButton.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.BasvuruButton.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.BasvuruButton.Location = new System.Drawing.Point(455, 194);
+            this.BasvuruButton.Location = new System.Drawing.Point(415, 171);
             this.BasvuruButton.Margin = new System.Windows.Forms.Padding(5);
             this.BasvuruButton.Name = "BasvuruButton";
             this.BasvuruButton.Size = new System.Drawing.Size(101, 31);
@@ -246,7 +246,7 @@ namespace Swap
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(347, 101);
+            this.label10.Location = new System.Drawing.Point(307, 78);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(222, 26);
             this.label10.TabIndex = 25;
@@ -259,7 +259,7 @@ namespace Swap
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(634, 265);
+            this.ClientSize = new System.Drawing.Size(557, 242);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.BasvuruButton);
             this.Controls.Add(this.IlceTB);

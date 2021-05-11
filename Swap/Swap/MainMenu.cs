@@ -71,7 +71,8 @@ namespace Swap
             }
             else
             {
-                SqlCommand komut = new SqlCommand("insert into ParaOnay(ParaMiktari)" + "values(@p1)", baglanti.baglanti());
+                SqlCommand komut = new SqlCommand("insert into ParaOnay(KullaniciID, ParaMiktari)" + "values(@p0, @p1)", baglanti.baglanti());
+                komut.Parameters.AddWithValue("@p0", Login.UserId);
                 komut.Parameters.AddWithValue("@p1", ParaEkleTB.Text);
                 komut.ExecuteNonQuery();
 
@@ -89,7 +90,8 @@ namespace Swap
             }
             else
             {
-                SqlCommand komut = new SqlCommand("insert into UrunOnay(UrunID,Miktar(kg),SatisFiyati)" + "values(@p1,@p2,@p3)", baglanti.baglanti());    
+                SqlCommand komut = new SqlCommand("insert into UrunOnay(KullaniciID,UrunID,Miktarkg,SatisFiyati)" + "values(@p0,@p1,@p2,@p3)", baglanti.baglanti());
+                komut.Parameters.AddWithValue("@p0", Login.UserId);
                 komut.Parameters.AddWithValue("@p1", UrunEkleSecimCB.Text);
                 komut.Parameters.AddWithValue("@p2", UrunMiktariTB.Text);
                 komut.Parameters.AddWithValue("@p3", SatisTutariTB.Text);
@@ -108,7 +110,69 @@ namespace Swap
             DataTable dt = new DataTable();
             da.Fill(dt);
             FinanceDataGrid.DataSource = dt;
+            
+        }
+        
+        private void SatinAlButton_Click(object sender, EventArgs e)
+        {
+            int UrunId = Convert.ToInt32(UrunSecimiComboBox.Text);
+            double Miktar = Convert.ToDouble(UrunMiktariTextBox.Text);
+            double Para = Convert.ToDouble(ParaLabel.Text);
+
+        
+
+            Dictionary<int, double> Urunler = ProductList(UrunId);
+            string sonuc = "";
+            double tutar= 0;
+            foreach (var item in Urunler)
+            {
+                if (Miktar >= item.Value)
+                {
+                    tutar = (Convert.ToDouble(item.Value.ToString()) *Convert.ToDouble(item.Key.ToString()));
+                    Console.WriteLine(item.Value.ToString());
+                    Console.WriteLine(item.Key.ToString());
+                    Console.WriteLine(tutar.ToString());
+                    if (Para >= tutar)
+                    {
+                        Para -= tutar;
+                        Miktar -= item.Value;
+                        sonuc += item.Key.ToString() + ',';
+                    }
+                    else
+                    {
+                        MessageBox.Show("Yeteri kadar paranız yoktur.");
+                    }
+
+                }
+                
+            }
+
+
+            //if (Miktar == 0) MessageBox.Show("Tüm ürünler Alındı. Idleri:" + sonuc.ToString());
+            //else if (Miktar > 0) MessageBox.Show("Yeteri kadar ürünümüz yoktur.Eksik ürün sayısı :"+Miktar.ToString());
+            //DialogResult dialogResult = new DialogResult();
+            //dialogResult = MessageBox.Show("Yine de ürünleri satın almak istiyor musunuz?", "Yetersiz Ürün Miktarı", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    MessageBox.Show("Tüm ürünler Alındı. Idleri:" + sonuc.ToString());
+            //}
+
+            
         }
 
+        private Dictionary<int,double> ProductList(int UrunId) {
+            Dictionary<int, double> Urunler = new Dictionary<int, double>();
+            SqlCommand komut = new SqlCommand("SELECT   Id, MiktarKG From KullaniciUrun Where UrunID=@p1 order by Fiyat ", baglanti.baglanti());
+            komut.Parameters.AddWithValue("@p1", UrunId);
+
+            SqlDataReader dr = komut.ExecuteReader();
+            while (dr.Read())
+                Urunler.Add(int.Parse(dr[0].ToString()), double.Parse(dr[1].ToString()));
+            dr.Close();
+            komut.ExecuteNonQuery();
+            baglanti.baglanti().Close();
+            return Urunler;
+        }
+        
     }
 }
