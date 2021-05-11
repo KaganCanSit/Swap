@@ -29,7 +29,16 @@ namespace Swap
             UrunEkleSecimCB.DataSource = dt;
             UrunSecimiComboBox.ValueMember = "UrunID";
             UrunSecimiComboBox.DataSource = dt;
+            UrunSecimComboBox.ValueMember = "UrunID";
+            UrunSecimComboBox.DataSource = dt;
         }
+
+        //ComboBox'ların İçerisini Hatali Seçim Olmaması İçin Ürün Id'leri İle Dolduruyoruz.
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            UrunIdComboBoxVeri();
+        }
+        
 
         //Görünebilirlik Ayarı
         private void HesapButton_Click(object sender, EventArgs e)
@@ -39,7 +48,6 @@ namespace Swap
             BilgiLabel.Visible = true;
             FinanceGroupBox.Visible = false;
             BuyProductGroupBox.Visible = false;
-            UrunIdComboBoxVeri();
         }
         private void BuyButton_Click(object sender, EventArgs e)
         {
@@ -51,7 +59,7 @@ namespace Swap
             
         }
 
-        SQLBaglantisi baglanti = new SQLBaglantisi()
+        SQLBaglantisi baglanti = new SQLBaglantisi();
 
         //Hesap >> Para Ekleme Onay Başvurusu
         private void ParaEkleButton_Click(object sender, EventArgs e)
@@ -101,5 +109,6 @@ namespace Swap
             da.Fill(dt);
             FinanceDataGrid.DataSource = dt;
         }
+
     }
 }

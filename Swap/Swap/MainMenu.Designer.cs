@@ -45,7 +45,6 @@ namespace Swap
             this.BuyProductGroupBox = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.UrunMiktariTextBox = new System.Windows.Forms.TextBox();
-            this.UrunSecimComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SatinAlButton = new System.Windows.Forms.Button();
             this.FinanceGroupBox = new System.Windows.Forms.GroupBox();
@@ -63,6 +62,8 @@ namespace Swap
             this.UrunEkleSecimCB = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BilgiLabel = new System.Windows.Forms.Label();
+            this.UrunSecimComboBox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -270,9 +271,10 @@ namespace Swap
             // 
             // BuyProductGroupBox
             // 
+            this.BuyProductGroupBox.Controls.Add(this.label9);
+            this.BuyProductGroupBox.Controls.Add(this.UrunSecimComboBox);
             this.BuyProductGroupBox.Controls.Add(this.label8);
             this.BuyProductGroupBox.Controls.Add(this.UrunMiktariTextBox);
-            this.BuyProductGroupBox.Controls.Add(this.UrunSecimComboBox);
             this.BuyProductGroupBox.Controls.Add(this.label7);
             this.BuyProductGroupBox.Controls.Add(this.SatinAlButton);
             this.BuyProductGroupBox.Location = new System.Drawing.Point(207, 209);
@@ -286,7 +288,7 @@ namespace Swap
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(246, 113);
+            this.label8.Location = new System.Drawing.Point(249, 137);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(141, 13);
             this.label8.TabIndex = 15;
@@ -295,37 +297,24 @@ namespace Swap
             // 
             // UrunMiktariTextBox
             // 
-            this.UrunMiktariTextBox.Location = new System.Drawing.Point(255, 134);
+            this.UrunMiktariTextBox.Location = new System.Drawing.Point(258, 158);
             this.UrunMiktariTextBox.Name = "UrunMiktariTextBox";
             this.UrunMiktariTextBox.Size = new System.Drawing.Size(121, 20);
             this.UrunMiktariTextBox.TabIndex = 14;
             // 
-            // UrunSecimComboBox
-            // 
-            this.UrunSecimComboBox.FormattingEnabled = true;
-            this.UrunSecimComboBox.Items.AddRange(new object[] {
-            "Armut",
-            "Elma",
-            "Muz",
-            "Çilek"});
-            this.UrunSecimComboBox.Location = new System.Drawing.Point(255, 82);
-            this.UrunSecimComboBox.Name = "UrunSecimComboBox";
-            this.UrunSecimComboBox.Size = new System.Drawing.Size(121, 21);
-            this.UrunSecimComboBox.TabIndex = 11;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(222, 58);
+            this.label7.Location = new System.Drawing.Point(223, 77);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(184, 13);
+            this.label7.Size = new System.Drawing.Size(187, 26);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Satın Almak İstediğiniz Ürünü Seçiniz:";
+            this.label7.Text = "Satın Almak İstediğiniz Ürünü Seçiniz:\r\n(1=Armut / 2=Elma / 3=Muz / 4=Çilek)";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SatinAlButton
             // 
-            this.SatinAlButton.Location = new System.Drawing.Point(274, 160);
+            this.SatinAlButton.Location = new System.Drawing.Point(277, 184);
             this.SatinAlButton.Name = "SatinAlButton";
             this.SatinAlButton.Size = new System.Drawing.Size(75, 23);
             this.SatinAlButton.TabIndex = 1;
@@ -370,11 +359,11 @@ namespace Swap
             // FinanceLabel
             // 
             this.FinanceLabel.AutoSize = true;
-            this.FinanceLabel.Location = new System.Drawing.Point(26, 69);
+            this.FinanceLabel.Location = new System.Drawing.Point(26, 61);
             this.FinanceLabel.Name = "FinanceLabel";
-            this.FinanceLabel.Size = new System.Drawing.Size(194, 13);
+            this.FinanceLabel.Size = new System.Drawing.Size(194, 26);
             this.FinanceLabel.TabIndex = 4;
-            this.FinanceLabel.Text = "Görüntülemek İstediğiniz Ürünü Seçiniz:";
+            this.FinanceLabel.Text = "Görüntülemek İstediğiniz Ürünü Seçiniz:\r\n(1=Armut / 2=Elma / 3=Muz / 4=Çilek)";
             this.FinanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GoruntuleButton
@@ -442,7 +431,7 @@ namespace Swap
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(52, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(332, 39);
+            this.label4.Size = new System.Drawing.Size(332, 52);
             this.label4.TabIndex = 5;
             this.label4.Text = resources.GetString("label4.Text");
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -465,7 +454,7 @@ namespace Swap
             "Elma",
             "Muz",
             "Çilek"});
-            this.UrunEkleSecimCB.Location = new System.Drawing.Point(154, 95);
+            this.UrunEkleSecimCB.Location = new System.Drawing.Point(154, 99);
             this.UrunEkleSecimCB.Name = "UrunEkleSecimCB";
             this.UrunEkleSecimCB.Size = new System.Drawing.Size(121, 21);
             this.UrunEkleSecimCB.TabIndex = 6;
@@ -473,7 +462,7 @@ namespace Swap
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 69);
+            this.label3.Location = new System.Drawing.Point(96, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(239, 13);
             this.label3.TabIndex = 5;
@@ -490,12 +479,30 @@ namespace Swap
             this.BilgiLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BilgiLabel.Visible = false;
             // 
+            // UrunSecimComboBox
+            // 
+            this.UrunSecimComboBox.FormattingEnabled = true;
+            this.UrunSecimComboBox.Location = new System.Drawing.Point(258, 109);
+            this.UrunSecimComboBox.Name = "UrunSecimComboBox";
+            this.UrunSecimComboBox.Size = new System.Drawing.Size(121, 21);
+            this.UrunSecimComboBox.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(94, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(472, 39);
+            this.label9.TabIndex = 17;
+            this.label9.Text = resources.GetString("label9.Text");
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(893, 450);
+            this.ClientSize = new System.Drawing.Size(890, 450);
             this.Controls.Add(this.FinanceGroupBox);
             this.Controls.Add(this.BuyProductGroupBox);
             this.Controls.Add(this.BilgiLabel);
@@ -508,6 +515,7 @@ namespace Swap
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ana Menü";
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.MenuPanel.ResumeLayout(false);
             this.MenuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -555,11 +563,12 @@ namespace Swap
         private System.Windows.Forms.Button GoruntuleButton;
         private System.Windows.Forms.DataGridView FinanceDataGrid;
         private System.Windows.Forms.GroupBox BuyProductGroupBox;
-        private System.Windows.Forms.ComboBox UrunSecimComboBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button SatinAlButton;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox UrunMiktariTextBox;
         private System.Windows.Forms.Label ParaLabel;
+        private System.Windows.Forms.ComboBox UrunSecimComboBox;
+        private System.Windows.Forms.Label label9;
     }
 }
