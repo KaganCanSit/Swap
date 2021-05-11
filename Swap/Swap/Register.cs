@@ -30,7 +30,7 @@ namespace Swap
             }
             else
             {
-                SqlCommand komut = new SqlCommand("insert into Kullanicilar(Ad, Soyad, KullaniciTuru, KullaniciAdi, Şifre, [Para Miktari], TC, Telefon, Email, Il, Ilce)" +
+                SqlCommand komut = new SqlCommand("insert into Kullanicilar(Ad, Soyad, KullaniciTuru, KullaniciAdi, Şifre, ParaMiktari, TC, Telefon, Email, Il, Ilce)" +
                 "values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11)", baglanti.baglanti());
                 komut.Parameters.AddWithValue("@p1", AdTB.Text);
                 komut.Parameters.AddWithValue("@p2", SoyadTB.Text);

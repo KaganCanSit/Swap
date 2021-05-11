@@ -18,16 +18,42 @@ namespace Swap
             InitializeComponent();
         }
 
+        //ComboBox içerisinde UrunID'lerinin çekilmesi.
+        void UrunIdComboBoxVeri()
+        {
+            SqlCommand komut = new SqlCommand("Select * From AnaUrunTablosu", baglanti.baglanti());
+            SqlDataAdapter da = new SqlDataAdapter(komut);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            UrunEkleSecimCB.ValueMember = "UrunID";
+            UrunEkleSecimCB.DataSource = dt;
+            UrunSecimiComboBox.ValueMember = "UrunID";
+            UrunSecimiComboBox.DataSource = dt;
+        }
+
+        //Görünebilirlik Ayarı
         private void HesapButton_Click(object sender, EventArgs e)
         {
             MoneyGB.Visible = true;
             UrunEkleGB.Visible = true;
             BilgiLabel.Visible = true;
             FinanceGroupBox.Visible = false;
-            UrunSatinAlGB.Visible = false;
+            BuyProductGroupBox.Visible = false;
+            UrunIdComboBoxVeri();
+        }
+        private void BuyButton_Click(object sender, EventArgs e)
+        {
+            FinanceGroupBox.Visible = true;
+            BuyProductGroupBox.Visible = true;
+            MoneyGB.Visible = false;
+            UrunEkleGB.Visible = false;
+            BilgiLabel.Visible = false;
+            
         }
 
-        SQLBaglantisi baglanti = new SQLBaglantisi();
+        SQLBaglantisi baglanti = new SQLBaglantisi()
+
+        //Hesap >> Para Ekleme Onay Başvurusu
         private void ParaEkleButton_Click(object sender, EventArgs e)
         {
             //Değerlerin Boş Girilmesi Durumunda Uyarı Vermesini Sağlıyoruz.
@@ -46,28 +72,17 @@ namespace Swap
             }
         }
 
-        public int UrunID;
-       
+        //Hesap >> Sisteme Ürün Ekleme Onay Başvurusu
         private void UrunEkleButton_Click(object sender, EventArgs e)
         {
-            if (UrunlerCB.Text == "" || UrunMiktariTB.Text == "" || SatisTutariTB.Text == "")
+            if (UrunEkleSecimCB.Text == "" || UrunMiktariTB.Text == "" || SatisTutariTB.Text == "")
             {
                 MessageBox.Show("Değerlerden Birini Veya Birkaçı Boş Bıraktınız. Kontrol Ediniz.");
             }
             else
             {
-                SqlCommand komut = new SqlCommand("insert into UrunOnay(UrunID,Miktar(kg),SatisFiyati)" + "values(@p1,@p2,@p3)", baglanti.baglanti());
-                
-                if(UrunlerCB.Text=="Armut")
-                    UrunID = 1;
-                else if(UrunlerCB.Text == "Elma")
-                    UrunID = 2;
-                else if (UrunlerCB.Text == "Muz")
-                    UrunID = 3;
-                else if (UrunlerCB.Text == "Çilek")
-                    UrunID = 4;
-                
-                komut.Parameters.AddWithValue("@p1", UrunID);
+                SqlCommand komut = new SqlCommand("insert into UrunOnay(UrunID,Miktar(kg),SatisFiyati)" + "values(@p1,@p2,@p3)", baglanti.baglanti());    
+                komut.Parameters.AddWithValue("@p1", UrunEkleSecimCB.Text);
                 komut.Parameters.AddWithValue("@p2", UrunMiktariTB.Text);
                 komut.Parameters.AddWithValue("@p3", SatisTutariTB.Text);
                 komut.ExecuteNonQuery();
@@ -76,52 +91,15 @@ namespace Swap
                 baglanti.baglanti().Close();
             }
         }
-
-        public int urunsecim; 
-        void UrunListele()
+       
+        //Ürün Satın Al >> İçerisinde Tabloda Seçime Göre Genel Ürünleri Gösterme.
+        private void GoruntuleButton_Click(object sender, EventArgs e)
         {
-            SqlCommand komut = new SqlCommand("Select * From KullaniciUrun Where UrunID=" + urunsecim, baglanti.baglanti());
+            SqlCommand komut = new SqlCommand("Select * From KullaniciUrun Where UrunID=" + UrunSecimiComboBox.Text, baglanti.baglanti());
             SqlDataAdapter da = new SqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
             FinanceDataGrid.DataSource = dt;
-        }
-
-        private void GoruntuleButton_Click(object sender, EventArgs e)
-        {
-            if(UrunCB.Text== "Armut")
-            {
-                urunsecim = 1;
-                UrunListele();
-            }
-            else if(UrunCB.Text=="Elma")
-            {
-                urunsecim = 2;
-                UrunListele();
-            }
-            else if(UrunCB.Text=="Muz")
-            {
-                urunsecim = 3;
-                UrunListele();
-            }
-            else if(UrunCB.Text== "Çilek")
-            {
-                urunsecim = 4;
-                UrunListele();
-            }
-            else
-            {
-                MessageBox.Show("Ürün Seçimini Boş Bıraktınız." + Environment.NewLine + "Yeniden Deneyiniz.");
-            }
-        }
-
-        private void BuyButton_Click(object sender, EventArgs e)
-        {
-            FinanceGroupBox.Visible = true;
-            UrunSatinAlGB.Visible = true;
-            MoneyGB.Visible = false;
-            UrunEkleGB.Visible = false;
-            BilgiLabel.Visible = false;
         }
     }
 }

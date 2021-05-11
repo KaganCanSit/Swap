@@ -40,7 +40,7 @@ namespace Swap
             this.LoginImageButton = new Bunifu.Framework.UI.BunifuTileButton();
             this.RegisterButton = new Bunifu.Framework.UI.BunifuThinButton2();
             this.RegisterLabel = new System.Windows.Forms.Label();
-            this.KullaniciTipiComboBox = new System.Windows.Forms.ComboBox();
+            this.UserTypeComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.LoginRightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -226,16 +226,16 @@ namespace Swap
             this.RegisterLabel.Text = "Hesabın yok mu?\r\nHadi birlikte oluşturalım.\r\n\"Kayıt Ol\" butonuna tıkla!";
             this.RegisterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // KullaniciTipiComboBox
+            // UserTypeComboBox
             // 
-            this.KullaniciTipiComboBox.FormattingEnabled = true;
-            this.KullaniciTipiComboBox.Items.AddRange(new object[] {
+            this.UserTypeComboBox.FormattingEnabled = true;
+            this.UserTypeComboBox.Items.AddRange(new object[] {
             "Admin",
             "Kullanici"});
-            this.KullaniciTipiComboBox.Location = new System.Drawing.Point(102, 204);
-            this.KullaniciTipiComboBox.Name = "KullaniciTipiComboBox";
-            this.KullaniciTipiComboBox.Size = new System.Drawing.Size(148, 21);
-            this.KullaniciTipiComboBox.TabIndex = 11;
+            this.UserTypeComboBox.Location = new System.Drawing.Point(102, 204);
+            this.UserTypeComboBox.Name = "UserTypeComboBox";
+            this.UserTypeComboBox.Size = new System.Drawing.Size(148, 21);
+            this.UserTypeComboBox.TabIndex = 11;
             // 
             // label1
             // 
@@ -253,7 +253,7 @@ namespace Swap
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(572, 441);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.KullaniciTipiComboBox);
+            this.Controls.Add(this.UserTypeComboBox);
             this.Controls.Add(this.RegisterLabel);
             this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.LoginImageButton);
@@ -288,7 +288,7 @@ namespace Swap
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label SwapLogoLabel;
-        private System.Windows.Forms.ComboBox KullaniciTipiComboBox;
+        private System.Windows.Forms.ComboBox UserTypeComboBox;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -31,6 +31,7 @@ namespace Swap
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.MenuPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.ParaLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.MoneyLabel = new System.Windows.Forms.Label();
             this.BuyButton = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -41,6 +42,17 @@ namespace Swap
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ParaEkleTB = new System.Windows.Forms.TextBox();
+            this.BuyProductGroupBox = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.UrunMiktariTextBox = new System.Windows.Forms.TextBox();
+            this.UrunSecimComboBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.SatinAlButton = new System.Windows.Forms.Button();
+            this.FinanceGroupBox = new System.Windows.Forms.GroupBox();
+            this.FinanceDataGrid = new System.Windows.Forms.DataGridView();
+            this.UrunSecimiComboBox = new System.Windows.Forms.ComboBox();
+            this.FinanceLabel = new System.Windows.Forms.Label();
+            this.GoruntuleButton = new System.Windows.Forms.Button();
             this.UrunEkleGB = new System.Windows.Forms.GroupBox();
             this.SatisTutariTB = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -48,29 +60,17 @@ namespace Swap
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.UrunEkleButton = new System.Windows.Forms.Button();
-            this.UrunlerCB = new System.Windows.Forms.ComboBox();
+            this.UrunEkleSecimCB = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BilgiLabel = new System.Windows.Forms.Label();
-            this.FinanceGroupBox = new System.Windows.Forms.GroupBox();
-            this.FinanceDataGrid = new System.Windows.Forms.DataGridView();
-            this.UrunCB = new System.Windows.Forms.ComboBox();
-            this.FinanceLabel = new System.Windows.Forms.Label();
-            this.GoruntuleButton = new System.Windows.Forms.Button();
-            this.UrunSatinAlGB = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.SatinAlBtn = new System.Windows.Forms.Button();
-            this.ParaLabel = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MoneyGB.SuspendLayout();
-            this.UrunEkleGB.SuspendLayout();
+            this.BuyProductGroupBox.SuspendLayout();
             this.FinanceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FinanceDataGrid)).BeginInit();
-            this.UrunSatinAlGB.SuspendLayout();
+            this.UrunEkleGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
@@ -94,6 +94,19 @@ namespace Swap
             this.MenuPanel.Quality = 10;
             this.MenuPanel.Size = new System.Drawing.Size(202, 450);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // ParaLabel
+            // 
+            this.ParaLabel.AutoSize = true;
+            this.ParaLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ParaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ParaLabel.ForeColor = System.Drawing.Color.White;
+            this.ParaLabel.Location = new System.Drawing.Point(67, 129);
+            this.ParaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ParaLabel.Name = "ParaLabel";
+            this.ParaLabel.Size = new System.Drawing.Size(24, 17);
+            this.ParaLabel.TabIndex = 6;
+            this.ParaLabel.Text = "00";
             // 
             // pictureBox2
             // 
@@ -221,7 +234,7 @@ namespace Swap
             this.MoneyGB.Controls.Add(this.label1);
             this.MoneyGB.Controls.Add(this.ParaEkleTB);
             this.MoneyGB.Controls.Add(this.ParaEkleButton);
-            this.MoneyGB.Location = new System.Drawing.Point(207, 20);
+            this.MoneyGB.Location = new System.Drawing.Point(207, 16);
             this.MoneyGB.Name = "MoneyGB";
             this.MoneyGB.Size = new System.Drawing.Size(249, 299);
             this.MoneyGB.TabIndex = 2;
@@ -255,6 +268,125 @@ namespace Swap
             this.ParaEkleTB.Size = new System.Drawing.Size(100, 20);
             this.ParaEkleTB.TabIndex = 2;
             // 
+            // BuyProductGroupBox
+            // 
+            this.BuyProductGroupBox.Controls.Add(this.label8);
+            this.BuyProductGroupBox.Controls.Add(this.UrunMiktariTextBox);
+            this.BuyProductGroupBox.Controls.Add(this.UrunSecimComboBox);
+            this.BuyProductGroupBox.Controls.Add(this.label7);
+            this.BuyProductGroupBox.Controls.Add(this.SatinAlButton);
+            this.BuyProductGroupBox.Location = new System.Drawing.Point(207, 209);
+            this.BuyProductGroupBox.Name = "BuyProductGroupBox";
+            this.BuyProductGroupBox.Size = new System.Drawing.Size(676, 221);
+            this.BuyProductGroupBox.TabIndex = 14;
+            this.BuyProductGroupBox.TabStop = false;
+            this.BuyProductGroupBox.Text = "Ürün Satın Al";
+            this.BuyProductGroupBox.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(246, 113);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(141, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Almak İstediginiz Miktar(KG):";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // UrunMiktariTextBox
+            // 
+            this.UrunMiktariTextBox.Location = new System.Drawing.Point(255, 134);
+            this.UrunMiktariTextBox.Name = "UrunMiktariTextBox";
+            this.UrunMiktariTextBox.Size = new System.Drawing.Size(121, 20);
+            this.UrunMiktariTextBox.TabIndex = 14;
+            // 
+            // UrunSecimComboBox
+            // 
+            this.UrunSecimComboBox.FormattingEnabled = true;
+            this.UrunSecimComboBox.Items.AddRange(new object[] {
+            "Armut",
+            "Elma",
+            "Muz",
+            "Çilek"});
+            this.UrunSecimComboBox.Location = new System.Drawing.Point(255, 82);
+            this.UrunSecimComboBox.Name = "UrunSecimComboBox";
+            this.UrunSecimComboBox.Size = new System.Drawing.Size(121, 21);
+            this.UrunSecimComboBox.TabIndex = 11;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(222, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(184, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Satın Almak İstediğiniz Ürünü Seçiniz:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // SatinAlButton
+            // 
+            this.SatinAlButton.Location = new System.Drawing.Point(274, 160);
+            this.SatinAlButton.Name = "SatinAlButton";
+            this.SatinAlButton.Size = new System.Drawing.Size(75, 23);
+            this.SatinAlButton.TabIndex = 1;
+            this.SatinAlButton.Text = "Satın Al";
+            this.SatinAlButton.UseVisualStyleBackColor = true;
+            // 
+            // FinanceGroupBox
+            // 
+            this.FinanceGroupBox.Controls.Add(this.FinanceDataGrid);
+            this.FinanceGroupBox.Controls.Add(this.UrunSecimiComboBox);
+            this.FinanceGroupBox.Controls.Add(this.FinanceLabel);
+            this.FinanceGroupBox.Controls.Add(this.GoruntuleButton);
+            this.FinanceGroupBox.Location = new System.Drawing.Point(207, 12);
+            this.FinanceGroupBox.Name = "FinanceGroupBox";
+            this.FinanceGroupBox.Size = new System.Drawing.Size(677, 191);
+            this.FinanceGroupBox.TabIndex = 5;
+            this.FinanceGroupBox.TabStop = false;
+            this.FinanceGroupBox.Text = "Borsa Durumu";
+            this.FinanceGroupBox.Visible = false;
+            // 
+            // FinanceDataGrid
+            // 
+            this.FinanceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FinanceDataGrid.Location = new System.Drawing.Point(245, 19);
+            this.FinanceDataGrid.Name = "FinanceDataGrid";
+            this.FinanceDataGrid.Size = new System.Drawing.Size(426, 160);
+            this.FinanceDataGrid.TabIndex = 13;
+            // 
+            // UrunSecimiComboBox
+            // 
+            this.UrunSecimiComboBox.FormattingEnabled = true;
+            this.UrunSecimiComboBox.Items.AddRange(new object[] {
+            "Armut",
+            "Elma",
+            "Muz",
+            "Çilek"});
+            this.UrunSecimiComboBox.Location = new System.Drawing.Point(58, 90);
+            this.UrunSecimiComboBox.Name = "UrunSecimiComboBox";
+            this.UrunSecimiComboBox.Size = new System.Drawing.Size(121, 21);
+            this.UrunSecimiComboBox.TabIndex = 11;
+            // 
+            // FinanceLabel
+            // 
+            this.FinanceLabel.AutoSize = true;
+            this.FinanceLabel.Location = new System.Drawing.Point(26, 69);
+            this.FinanceLabel.Name = "FinanceLabel";
+            this.FinanceLabel.Size = new System.Drawing.Size(194, 13);
+            this.FinanceLabel.TabIndex = 4;
+            this.FinanceLabel.Text = "Görüntülemek İstediğiniz Ürünü Seçiniz:";
+            this.FinanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // GoruntuleButton
+            // 
+            this.GoruntuleButton.Location = new System.Drawing.Point(81, 117);
+            this.GoruntuleButton.Name = "GoruntuleButton";
+            this.GoruntuleButton.Size = new System.Drawing.Size(75, 23);
+            this.GoruntuleButton.TabIndex = 1;
+            this.GoruntuleButton.Text = "Görüntüle";
+            this.GoruntuleButton.UseVisualStyleBackColor = true;
+            this.GoruntuleButton.Click += new System.EventHandler(this.GoruntuleButton_Click);
+            // 
             // UrunEkleGB
             // 
             this.UrunEkleGB.Controls.Add(this.SatisTutariTB);
@@ -263,9 +395,9 @@ namespace Swap
             this.UrunEkleGB.Controls.Add(this.label5);
             this.UrunEkleGB.Controls.Add(this.label4);
             this.UrunEkleGB.Controls.Add(this.UrunEkleButton);
-            this.UrunEkleGB.Controls.Add(this.UrunlerCB);
+            this.UrunEkleGB.Controls.Add(this.UrunEkleSecimCB);
             this.UrunEkleGB.Controls.Add(this.label3);
-            this.UrunEkleGB.Location = new System.Drawing.Point(462, 20);
+            this.UrunEkleGB.Location = new System.Drawing.Point(461, 16);
             this.UrunEkleGB.Name = "UrunEkleGB";
             this.UrunEkleGB.Size = new System.Drawing.Size(422, 299);
             this.UrunEkleGB.TabIndex = 3;
@@ -325,18 +457,18 @@ namespace Swap
             this.UrunEkleButton.UseVisualStyleBackColor = true;
             this.UrunEkleButton.Click += new System.EventHandler(this.UrunEkleButton_Click);
             // 
-            // UrunlerCB
+            // UrunEkleSecimCB
             // 
-            this.UrunlerCB.FormattingEnabled = true;
-            this.UrunlerCB.Items.AddRange(new object[] {
+            this.UrunEkleSecimCB.FormattingEnabled = true;
+            this.UrunEkleSecimCB.Items.AddRange(new object[] {
             "Armut",
             "Elma",
             "Muz",
             "Çilek"});
-            this.UrunlerCB.Location = new System.Drawing.Point(154, 95);
-            this.UrunlerCB.Name = "UrunlerCB";
-            this.UrunlerCB.Size = new System.Drawing.Size(121, 21);
-            this.UrunlerCB.TabIndex = 6;
+            this.UrunEkleSecimCB.Location = new System.Drawing.Point(154, 95);
+            this.UrunEkleSecimCB.Name = "UrunEkleSecimCB";
+            this.UrunEkleSecimCB.Size = new System.Drawing.Size(121, 21);
+            this.UrunEkleSecimCB.TabIndex = 6;
             // 
             // label3
             // 
@@ -350,7 +482,7 @@ namespace Swap
             // BilgiLabel
             // 
             this.BilgiLabel.AutoSize = true;
-            this.BilgiLabel.Location = new System.Drawing.Point(235, 365);
+            this.BilgiLabel.Location = new System.Drawing.Point(235, 361);
             this.BilgiLabel.Name = "BilgiLabel";
             this.BilgiLabel.Size = new System.Drawing.Size(602, 39);
             this.BilgiLabel.TabIndex = 4;
@@ -358,150 +490,18 @@ namespace Swap
             this.BilgiLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BilgiLabel.Visible = false;
             // 
-            // FinanceGroupBox
-            // 
-            this.FinanceGroupBox.Controls.Add(this.FinanceDataGrid);
-            this.FinanceGroupBox.Controls.Add(this.UrunCB);
-            this.FinanceGroupBox.Controls.Add(this.FinanceLabel);
-            this.FinanceGroupBox.Controls.Add(this.GoruntuleButton);
-            this.FinanceGroupBox.Location = new System.Drawing.Point(207, 25);
-            this.FinanceGroupBox.Name = "FinanceGroupBox";
-            this.FinanceGroupBox.Size = new System.Drawing.Size(677, 191);
-            this.FinanceGroupBox.TabIndex = 5;
-            this.FinanceGroupBox.TabStop = false;
-            this.FinanceGroupBox.Text = "Borsa Durumu";
-            this.FinanceGroupBox.Visible = false;
-            // 
-            // FinanceDataGrid
-            // 
-            this.FinanceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FinanceDataGrid.Location = new System.Drawing.Point(245, 19);
-            this.FinanceDataGrid.Name = "FinanceDataGrid";
-            this.FinanceDataGrid.Size = new System.Drawing.Size(426, 160);
-            this.FinanceDataGrid.TabIndex = 13;
-            // 
-            // UrunCB
-            // 
-            this.UrunCB.FormattingEnabled = true;
-            this.UrunCB.Items.AddRange(new object[] {
-            "Armut",
-            "Elma",
-            "Muz",
-            "Çilek"});
-            this.UrunCB.Location = new System.Drawing.Point(58, 90);
-            this.UrunCB.Name = "UrunCB";
-            this.UrunCB.Size = new System.Drawing.Size(121, 21);
-            this.UrunCB.TabIndex = 11;
-            // 
-            // FinanceLabel
-            // 
-            this.FinanceLabel.AutoSize = true;
-            this.FinanceLabel.Location = new System.Drawing.Point(26, 69);
-            this.FinanceLabel.Name = "FinanceLabel";
-            this.FinanceLabel.Size = new System.Drawing.Size(194, 13);
-            this.FinanceLabel.TabIndex = 4;
-            this.FinanceLabel.Text = "Görüntülemek İstediğiniz Ürünü Seçiniz:";
-            this.FinanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // GoruntuleButton
-            // 
-            this.GoruntuleButton.Location = new System.Drawing.Point(81, 117);
-            this.GoruntuleButton.Name = "GoruntuleButton";
-            this.GoruntuleButton.Size = new System.Drawing.Size(75, 23);
-            this.GoruntuleButton.TabIndex = 1;
-            this.GoruntuleButton.Text = "Görüntüle";
-            this.GoruntuleButton.UseVisualStyleBackColor = true;
-            this.GoruntuleButton.Click += new System.EventHandler(this.GoruntuleButton_Click);
-            // 
-            // UrunSatinAlGB
-            // 
-            this.UrunSatinAlGB.Controls.Add(this.label8);
-            this.UrunSatinAlGB.Controls.Add(this.textBox1);
-            this.UrunSatinAlGB.Controls.Add(this.comboBox1);
-            this.UrunSatinAlGB.Controls.Add(this.label7);
-            this.UrunSatinAlGB.Controls.Add(this.SatinAlBtn);
-            this.UrunSatinAlGB.Location = new System.Drawing.Point(207, 219);
-            this.UrunSatinAlGB.Name = "UrunSatinAlGB";
-            this.UrunSatinAlGB.Size = new System.Drawing.Size(677, 221);
-            this.UrunSatinAlGB.TabIndex = 14;
-            this.UrunSatinAlGB.TabStop = false;
-            this.UrunSatinAlGB.Text = "Ürün Satın Al";
-            this.UrunSatinAlGB.Visible = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(246, 113);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(141, 13);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Almak İstediginiz Miktar(KG):";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(255, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 14;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Armut",
-            "Elma",
-            "Muz",
-            "Çilek"});
-            this.comboBox1.Location = new System.Drawing.Point(255, 82);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(222, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(184, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Satın Almak İstediğiniz Ürünü Seçiniz:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // SatinAlBtn
-            // 
-            this.SatinAlBtn.Location = new System.Drawing.Point(274, 160);
-            this.SatinAlBtn.Name = "SatinAlBtn";
-            this.SatinAlBtn.Size = new System.Drawing.Size(75, 23);
-            this.SatinAlBtn.TabIndex = 1;
-            this.SatinAlBtn.Text = "Satın Al";
-            this.SatinAlBtn.UseVisualStyleBackColor = true;
-            // 
-            // ParaLabel
-            // 
-            this.ParaLabel.AutoSize = true;
-            this.ParaLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ParaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.ParaLabel.ForeColor = System.Drawing.Color.White;
-            this.ParaLabel.Location = new System.Drawing.Point(67, 129);
-            this.ParaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ParaLabel.Name = "ParaLabel";
-            this.ParaLabel.Size = new System.Drawing.Size(24, 17);
-            this.ParaLabel.TabIndex = 6;
-            this.ParaLabel.Text = "00";
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(894, 450);
-            this.Controls.Add(this.UrunSatinAlGB);
+            this.ClientSize = new System.Drawing.Size(893, 450);
             this.Controls.Add(this.FinanceGroupBox);
+            this.Controls.Add(this.BuyProductGroupBox);
             this.Controls.Add(this.BilgiLabel);
-            this.Controls.Add(this.UrunEkleGB);
             this.Controls.Add(this.MoneyGB);
             this.Controls.Add(this.MenuPanel);
+            this.Controls.Add(this.UrunEkleGB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -514,13 +514,13 @@ namespace Swap
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MoneyGB.ResumeLayout(false);
             this.MoneyGB.PerformLayout();
-            this.UrunEkleGB.ResumeLayout(false);
-            this.UrunEkleGB.PerformLayout();
+            this.BuyProductGroupBox.ResumeLayout(false);
+            this.BuyProductGroupBox.PerformLayout();
             this.FinanceGroupBox.ResumeLayout(false);
             this.FinanceGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FinanceDataGrid)).EndInit();
-            this.UrunSatinAlGB.ResumeLayout(false);
-            this.UrunSatinAlGB.PerformLayout();
+            this.UrunEkleGB.ResumeLayout(false);
+            this.UrunEkleGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -546,20 +546,20 @@ namespace Swap
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button UrunEkleButton;
-        private System.Windows.Forms.ComboBox UrunlerCB;
+        private System.Windows.Forms.ComboBox UrunEkleSecimCB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label BilgiLabel;
         private System.Windows.Forms.GroupBox FinanceGroupBox;
-        private System.Windows.Forms.ComboBox UrunCB;
+        private System.Windows.Forms.ComboBox UrunSecimiComboBox;
         private System.Windows.Forms.Label FinanceLabel;
         private System.Windows.Forms.Button GoruntuleButton;
         private System.Windows.Forms.DataGridView FinanceDataGrid;
-        private System.Windows.Forms.GroupBox UrunSatinAlGB;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox BuyProductGroupBox;
+        private System.Windows.Forms.ComboBox UrunSecimComboBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button SatinAlBtn;
+        private System.Windows.Forms.Button SatinAlButton;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox UrunMiktariTextBox;
         private System.Windows.Forms.Label ParaLabel;
     }
 }

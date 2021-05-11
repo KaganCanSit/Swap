@@ -17,7 +17,7 @@ namespace Swap
         {
             InitializeComponent();
         }
-
+        //SQL Sınıfı İle Veri Kaynağımıza Bağlantı Sağlıyoruz.
         SQLBaglantisi baglanti = new SQLBaglantisi();
 
         void KullaniciBilgileriGetir()
@@ -37,7 +37,30 @@ namespace Swap
             KullaniciUrunDataGrid.DataSource = dt4;
         }
 
-        //Form Yüklenirken Gridlerin İçerisini Tablo Verileri İle Doldur.
+        //ComboBox içerisinde UrunID'lerinin çekilmesi.
+        void UrunIdComboBox()
+        {
+            SqlCommand komut = new SqlCommand("Select * From AnaUrunTablosu", baglanti.baglanti());
+            SqlDataAdapter da = new SqlDataAdapter(komut);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            UrunIDComboBox.ValueMember = "UrunID";
+            UrunIDComboBox.DataSource = dt;
+        }
+        //ComboBox içerisine  KullaniciID'lerinin çekilmesi.
+        void KullaniciIDCB()
+        {
+            SqlCommand komut = new SqlCommand("Select * From Kullanicilar", baglanti.baglanti());
+            SqlDataAdapter da = new SqlDataAdapter(komut);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            KullaniciIDComboBox.ValueMember = "KullaniciID";
+            KullaniciIDComboBox.DataSource = dt;
+            KullaniciIDComboBox2.ValueMember = "KullaniciID";
+            KullaniciIDComboBox2.DataSource = dt;
+        }
+
+        //Form Yüklenirken Gridlerin İçerisini ve ComboBox'ları Tablo Verileri İle Doldur.
         private void AdminForm_Load(object sender, EventArgs e)
         {
             SqlCommand komut = new SqlCommand("Select * From ParaOnay", baglanti.baglanti());
@@ -54,14 +77,17 @@ namespace Swap
 
             KullaniciBilgileriGetir();
             KullanicilarinUrunBilgisiniGetir();
+
+            UrunIdComboBox();
+            KullaniciIDCB();
         }
 
  
-        //Kullanıcı Seçimine Göre Son Para Değerini Güncelle.
+        //Kullanıcı Seçimine Göre Son Para Değerini Güncelle.(Onay)
         public int KullaniciSecim;
         private void ParaEkleButton_Click(object sender, EventArgs e)
         {
-            KullaniciSecim= Convert.ToInt32(KullaniciIDTB.Text);
+            KullaniciSecim= Convert.ToInt32(KullaniciIDComboBox.Text);
 
             SqlCommand komut = new SqlCommand("update Kullanicilar set ParaMiktari=@p6 where KullaniciID="+KullaniciSecim, baglanti.baglanti());
             komut.Parameters.AddWithValue("@p6", SonParaTB.Text);
@@ -75,15 +101,15 @@ namespace Swap
         //Urun Ekleme İşlemi(Onay)
         private void UrunEkle_Click(object sender, EventArgs e)
         {
-            if (KulIDTextBox.Text == "" || UrunIDTextBox.Text == "" || MiktarTextBox.Text == "" || FiyatTextBox.Text == "")
+            if (KullaniciIDComboBox2.Text == "" || UrunIDComboBox.Text == "" || MiktarTextBox.Text == "" || FiyatTextBox.Text == "")
             {
                 MessageBox.Show("Değerlerden Birini Veya Birkaçı Boş Bıraktınız. Kontrol Ediniz.");
             }
             else
             {
                 SqlCommand komut = new SqlCommand("insert into KullaniciUrun(KullaniciID, UrunID, MiktarKG, Fiyat)" + "values(@p0,@p1,@p2,@p3)", baglanti.baglanti());
-                komut.Parameters.AddWithValue("@p0", KulIDTextBox.Text);
-                komut.Parameters.AddWithValue("@p1", UrunIDTextBox.Text);
+                komut.Parameters.AddWithValue("@p0", KullaniciIDComboBox2.Text);
+                komut.Parameters.AddWithValue("@p1", UrunIDComboBox.Text);
                 komut.Parameters.AddWithValue("@p2", MiktarTextBox.Text);
                 komut.Parameters.AddWithValue("@p3", FiyatTextBox.Text);
                 komut.ExecuteNonQuery();
@@ -92,11 +118,6 @@ namespace Swap
                 baglanti.baglanti().Close();
                 KullanicilarinUrunBilgisiniGetir();
             }
-        }
-
-        private void UrunIDTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

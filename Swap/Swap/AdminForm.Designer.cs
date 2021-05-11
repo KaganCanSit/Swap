@@ -40,21 +40,21 @@ namespace Swap
             this.KullanicilarDatGrid = new System.Windows.Forms.DataGridView();
             this.KullaniciUrunDataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.KullaniciIDComboBox = new System.Windows.Forms.ComboBox();
             this.ParaEkleButton = new System.Windows.Forms.Button();
             this.SonParaTB = new System.Windows.Forms.TextBox();
             this.SonTutarLabel = new System.Windows.Forms.Label();
-            this.KullaniciIDTB = new System.Windows.Forms.TextBox();
             this.IDLabel = new System.Windows.Forms.Label();
             this.KullaniciUrunEkleGB = new System.Windows.Forms.GroupBox();
-            this.UrunEkle = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.KulIDTextBox = new System.Windows.Forms.TextBox();
-            this.UrunIDTextBox = new System.Windows.Forms.TextBox();
-            this.MiktarTextBox = new System.Windows.Forms.TextBox();
+            this.KullaniciIDComboBox2 = new System.Windows.Forms.ComboBox();
+            this.UrunIDComboBox = new System.Windows.Forms.ComboBox();
             this.FiyatTextBox = new System.Windows.Forms.TextBox();
+            this.MiktarTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.UrunEkle = new System.Windows.Forms.Button();
             this.LoginRightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParaOnayDataGrid)).BeginInit();
@@ -168,10 +168,10 @@ namespace Swap
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.KullaniciIDComboBox);
             this.groupBox3.Controls.Add(this.ParaEkleButton);
             this.groupBox3.Controls.Add(this.SonParaTB);
             this.groupBox3.Controls.Add(this.SonTutarLabel);
-            this.groupBox3.Controls.Add(this.KullaniciIDTB);
             this.groupBox3.Controls.Add(this.IDLabel);
             this.groupBox3.Location = new System.Drawing.Point(12, 495);
             this.groupBox3.Name = "groupBox3";
@@ -179,6 +179,14 @@ namespace Swap
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kullanıcıya Para Ekle";
+            // 
+            // KullaniciIDComboBox
+            // 
+            this.KullaniciIDComboBox.FormattingEnabled = true;
+            this.KullaniciIDComboBox.Location = new System.Drawing.Point(94, 52);
+            this.KullaniciIDComboBox.Name = "KullaniciIDComboBox";
+            this.KullaniciIDComboBox.Size = new System.Drawing.Size(108, 21);
+            this.KullaniciIDComboBox.TabIndex = 5;
             // 
             // ParaEkleButton
             // 
@@ -206,13 +214,6 @@ namespace Swap
             this.SonTutarLabel.TabIndex = 2;
             this.SonTutarLabel.Text = "En Son Olması\r\nGereken Para\r\nTutarını Giriniz:";
             // 
-            // KullaniciIDTB
-            // 
-            this.KullaniciIDTB.Location = new System.Drawing.Point(94, 58);
-            this.KullaniciIDTB.Name = "KullaniciIDTB";
-            this.KullaniciIDTB.Size = new System.Drawing.Size(108, 20);
-            this.KullaniciIDTB.TabIndex = 1;
-            // 
             // IDLabel
             // 
             this.IDLabel.AutoSize = true;
@@ -224,10 +225,10 @@ namespace Swap
             // 
             // KullaniciUrunEkleGB
             // 
+            this.KullaniciUrunEkleGB.Controls.Add(this.KullaniciIDComboBox2);
+            this.KullaniciUrunEkleGB.Controls.Add(this.UrunIDComboBox);
             this.KullaniciUrunEkleGB.Controls.Add(this.FiyatTextBox);
             this.KullaniciUrunEkleGB.Controls.Add(this.MiktarTextBox);
-            this.KullaniciUrunEkleGB.Controls.Add(this.UrunIDTextBox);
-            this.KullaniciUrunEkleGB.Controls.Add(this.KulIDTextBox);
             this.KullaniciUrunEkleGB.Controls.Add(this.label4);
             this.KullaniciUrunEkleGB.Controls.Add(this.label3);
             this.KullaniciUrunEkleGB.Controls.Add(this.label2);
@@ -240,42 +241,35 @@ namespace Swap
             this.KullaniciUrunEkleGB.TabStop = false;
             this.KullaniciUrunEkleGB.Text = "Kullanıcıya Urun Ekle";
             // 
-            // UrunEkle
+            // KullaniciIDComboBox2
             // 
-            this.UrunEkle.Location = new System.Drawing.Point(445, 71);
-            this.UrunEkle.Name = "UrunEkle";
-            this.UrunEkle.Size = new System.Drawing.Size(91, 23);
-            this.UrunEkle.TabIndex = 4;
-            this.UrunEkle.Text = "Ürün Ekle";
-            this.UrunEkle.UseVisualStyleBackColor = true;
-            this.UrunEkle.Click += new System.EventHandler(this.UrunEkle_Click);
+            this.KullaniciIDComboBox2.FormattingEnabled = true;
+            this.KullaniciIDComboBox2.Location = new System.Drawing.Point(89, 38);
+            this.KullaniciIDComboBox2.Name = "KullaniciIDComboBox2";
+            this.KullaniciIDComboBox2.Size = new System.Drawing.Size(108, 21);
+            this.KullaniciIDComboBox2.TabIndex = 6;
             // 
-            // label1
+            // UrunIDComboBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 52);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Urun Eklemek \r\nİstediginiz \r\nKullanıcının \r\nID\'sini Giriniz:";
+            this.UrunIDComboBox.FormattingEnabled = true;
+            this.UrunIDComboBox.Location = new System.Drawing.Point(89, 99);
+            this.UrunIDComboBox.Name = "UrunIDComboBox";
+            this.UrunIDComboBox.Size = new System.Drawing.Size(108, 21);
+            this.UrunIDComboBox.TabIndex = 12;
             // 
-            // label2
+            // FiyatTextBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 52);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Eklemek \r\nİstediginiz \r\nÜrünün \r\nID\'sini Giriniz:";
+            this.FiyatTextBox.Location = new System.Drawing.Point(322, 100);
+            this.FiyatTextBox.Name = "FiyatTextBox";
+            this.FiyatTextBox.Size = new System.Drawing.Size(108, 20);
+            this.FiyatTextBox.TabIndex = 11;
             // 
-            // label3
+            // MiktarTextBox
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(213, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 39);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Eklemek İstediginiz \r\nUrunun Miktarını(kg)\r\nGiriniz:";
+            this.MiktarTextBox.Location = new System.Drawing.Point(322, 39);
+            this.MiktarTextBox.Name = "MiktarTextBox";
+            this.MiktarTextBox.Size = new System.Drawing.Size(108, 20);
+            this.MiktarTextBox.TabIndex = 10;
             // 
             // label4
             // 
@@ -286,34 +280,42 @@ namespace Swap
             this.label4.TabIndex = 8;
             this.label4.Text = "Eklemek  İstediginiz \r\nUrunun Satış \r\nFiyatını Giriniz:";
             // 
-            // KulIDTextBox
+            // label3
             // 
-            this.KulIDTextBox.Location = new System.Drawing.Point(89, 39);
-            this.KulIDTextBox.Name = "KulIDTextBox";
-            this.KulIDTextBox.Size = new System.Drawing.Size(108, 20);
-            this.KulIDTextBox.TabIndex = 5;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(213, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 39);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Eklemek İstediginiz \r\nUrunun Miktarını(kg)\r\nGiriniz:";
             // 
-            // UrunIDTextBox
+            // label2
             // 
-            this.UrunIDTextBox.Location = new System.Drawing.Point(89, 100);
-            this.UrunIDTextBox.Name = "UrunIDTextBox";
-            this.UrunIDTextBox.Size = new System.Drawing.Size(108, 20);
-            this.UrunIDTextBox.TabIndex = 9;
-            this.UrunIDTextBox.TextChanged += new System.EventHandler(this.UrunIDTextBox_TextChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 52);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Eklemek \r\nİstediginiz \r\nÜrünün \r\nID\'sini Giriniz:";
             // 
-            // MiktarTextBox
+            // label1
             // 
-            this.MiktarTextBox.Location = new System.Drawing.Point(322, 39);
-            this.MiktarTextBox.Name = "MiktarTextBox";
-            this.MiktarTextBox.Size = new System.Drawing.Size(108, 20);
-            this.MiktarTextBox.TabIndex = 10;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 52);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Urun Eklemek \r\nİstediginiz \r\nKullanıcının \r\nID\'sini Giriniz:";
             // 
-            // FiyatTextBox
+            // UrunEkle
             // 
-            this.FiyatTextBox.Location = new System.Drawing.Point(322, 100);
-            this.FiyatTextBox.Name = "FiyatTextBox";
-            this.FiyatTextBox.Size = new System.Drawing.Size(108, 20);
-            this.FiyatTextBox.TabIndex = 11;
+            this.UrunEkle.Location = new System.Drawing.Point(445, 71);
+            this.UrunEkle.Name = "UrunEkle";
+            this.UrunEkle.Size = new System.Drawing.Size(91, 23);
+            this.UrunEkle.TabIndex = 4;
+            this.UrunEkle.Text = "Ürün Ekle";
+            this.UrunEkle.UseVisualStyleBackColor = true;
+            this.UrunEkle.Click += new System.EventHandler(this.UrunEkle_Click);
             // 
             // AdminForm
             // 
@@ -361,17 +363,17 @@ namespace Swap
         private System.Windows.Forms.Button ParaEkleButton;
         private System.Windows.Forms.TextBox SonParaTB;
         private System.Windows.Forms.Label SonTutarLabel;
-        private System.Windows.Forms.TextBox KullaniciIDTB;
         private System.Windows.Forms.Label IDLabel;
         private System.Windows.Forms.GroupBox KullaniciUrunEkleGB;
         private System.Windows.Forms.Button UrunEkle;
         private System.Windows.Forms.TextBox FiyatTextBox;
         private System.Windows.Forms.TextBox MiktarTextBox;
-        private System.Windows.Forms.TextBox UrunIDTextBox;
-        private System.Windows.Forms.TextBox KulIDTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox KullaniciIDComboBox;
+        private System.Windows.Forms.ComboBox UrunIDComboBox;
+        private System.Windows.Forms.ComboBox KullaniciIDComboBox2;
     }
 }
