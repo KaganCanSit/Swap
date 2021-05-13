@@ -60,7 +60,7 @@ namespace Swap
             this.LoginRightPanel.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(82)))));
             this.LoginRightPanel.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(82)))));
             this.LoginRightPanel.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(22)))), ((int)(((byte)(82)))));
-            this.LoginRightPanel.Location = new System.Drawing.Point(358, 0);
+            this.LoginRightPanel.Location = new System.Drawing.Point(356, 0);
             this.LoginRightPanel.Margin = new System.Windows.Forms.Padding(2);
             this.LoginRightPanel.Name = "LoginRightPanel";
             this.LoginRightPanel.Quality = 10;
@@ -251,7 +251,7 @@ namespace Swap
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(572, 441);
+            this.ClientSize = new System.Drawing.Size(570, 441);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UserTypeComboBox);
             this.Controls.Add(this.RegisterLabel);
@@ -267,6 +267,7 @@ namespace Swap
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giriş Yap";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.LoginRightPanel.ResumeLayout(false);
             this.LoginRightPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

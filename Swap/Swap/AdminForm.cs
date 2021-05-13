@@ -37,7 +37,7 @@ namespace Swap
             KullaniciUrunDataGrid.DataSource = dt4;
         }
 
-        //ComboBox içerisinde UrunID'lerinin çekilmesi.
+        //ComboBox içerisinde UrunID'lerinin Çekilmesi
         void UrunIdComboBox()
         {
             SqlCommand komut = new SqlCommand("Select * From AnaUrunTablosu", baglanti.baglanti());
@@ -47,7 +47,7 @@ namespace Swap
             UrunIDComboBox.ValueMember = "UrunID";
             UrunIDComboBox.DataSource = dt;
         }
-        //ComboBox içerisine  KullaniciID'lerinin çekilmesi.
+        //ComboBox İçerisine  KullaniciID'lerinin Çekilmesi
         void KullaniciIDCB()
         {
             SqlCommand komut = new SqlCommand("Select * From Kullanicilar", baglanti.baglanti());
@@ -60,7 +60,7 @@ namespace Swap
             KullaniciIDComboBox2.DataSource = dt;
         }
 
-        //Form Yüklenirken Gridlerin İçerisini ve ComboBox'ları Tablo Verileri İle Doldur.
+        //Form Yüklenirken Gridlerin İçerisini ve ComboBox'ları Tablo Verilerinin Çekilmesi
         private void AdminForm_Load(object sender, EventArgs e)
         {
             SqlCommand komut = new SqlCommand("Select * From ParaOnay", baglanti.baglanti());
@@ -83,7 +83,7 @@ namespace Swap
         }
 
  
-        //Kullanıcı Seçimine Göre Son Para Değerini Güncelle.(Onay)
+        //Para Değerini Güncellenme İşlemi(Onay)
         public int KullaniciSecim;
         private void ParaEkleButton_Click(object sender, EventArgs e)
         {

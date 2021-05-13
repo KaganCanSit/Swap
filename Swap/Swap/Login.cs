@@ -18,13 +18,15 @@ namespace Swap
             InitializeComponent();
         }
 
-        //Oluşturduğumuz Database Sınıfı Aracılığıyla Database'den Veri Alıyoruz.
+        //Oluşturmuş Olduğumuz Database Sınıfı Aracılığıyla Database'den Veri Alımı
         SQLBaglantisi baglanti = new SQLBaglantisi();
         SqlCommand komut;
         
+        //Program İçerisinde Kullanabilmek İçin Kullanıcının ID ve Parası Alınarak Public Değişkene Atanması
         public static int UserId;
         public static int ParaMik;
-        //Kullanıcının Adı, Soyadı, Kullanıcı Tipi Kontrolü Ve Girişi
+
+        //Kullanıcının Adı, Soyadı, Kullanıcı Tipi Kontrolü Ve Giriş
         private void LoginButton_Click(object sender, EventArgs e)
         {
             komut = new SqlCommand("Select KullaniciID, ParaMiktari From Kullanicilar where KullaniciTuru=@p3 and KullaniciAdi=@p4 and Şifre=@p5", baglanti.baglanti());
@@ -37,7 +39,6 @@ namespace Swap
             {
                 UserId = int.Parse(dr[0].ToString());
                 
-
                 //Kullanıcı Girişi Yetkisine Göre İşlem Yapacağı Forma İletiyoruz. 
                 if (UserTypeComboBox.Text == "Kullanici")
                 {
@@ -68,6 +69,12 @@ namespace Swap
             Register Register = new Register();
             Register.Show();
             this.Hide();
+        }
+
+        //Hızlı İşlem İçin ComboBox Tercihinin "Kullanici" Olarak Ayarlanmasi
+        private void Login_Load(object sender, EventArgs e)
+        {
+            UserTypeComboBox.SelectedIndex = 1;
         }
     }
 }

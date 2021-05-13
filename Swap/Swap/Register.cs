@@ -18,9 +18,10 @@ namespace Swap
             InitializeComponent();
         }
 
+        //Oluşturmuş Olduğumuz Database Sınıfı Aracılığıyla Database'den Veri Alımı
         SQLBaglantisi baglanti = new SQLBaglantisi();
 
-        //Değerleri Kullanıcı Tablosu içerisine aktarıyoruz.
+        //Değerlerin Boş Mu Kontrolü Ve Kullanıcı Tablosu İçerisine Eklenmesi
         private void BasvuruButton_Click(object sender, EventArgs e)
         {
             //Değerlerin Boş Girilmesi Durumunda Uyarı Vermesini Sağlıyoruz.

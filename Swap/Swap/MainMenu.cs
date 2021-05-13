@@ -109,70 +109,130 @@ namespace Swap
             SqlDataAdapter da = new SqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            FinanceDataGrid.DataSource = dt;
-            
+            FinanceDataGrid.DataSource = dt;            
         }
-        
+
+        //Ürün Satın Al >> Ürün Satın Alma, Ürünlerin Sistemden Düşülmesi, Para Değerlerinin Düzeltilmesi İşlemleri.
         private void SatinAlButton_Click(object sender, EventArgs e)
         {
             int UrunId = Convert.ToInt32(UrunSecimiComboBox.Text);
             double Miktar = Convert.ToDouble(UrunMiktariTextBox.Text);
             double Para = Convert.ToDouble(ParaLabel.Text);
 
-        
+            List<KullaniciUrun> Urunler = ProductList(UrunId);
+            foreach (var urun in Urunler) {
 
-            Dictionary<int, double> Urunler = ProductList(UrunId);
-            string sonuc = "";
-            double tutar= 0;
-            foreach (var item in Urunler)
-            {
-                if (Miktar >= item.Value)
+                 if (Miktar >=  double.Parse(urun.MiktarKG.ToString()))
                 {
-                    tutar = (Convert.ToDouble(item.Value.ToString()) *Convert.ToDouble(item.Key.ToString()));
-                    Console.WriteLine(item.Value.ToString());
-                    Console.WriteLine(item.Key.ToString());
-                    Console.WriteLine(tutar.ToString());
-                    if (Para >= tutar)
-                    {
-                        Para -= tutar;
-                        Miktar -= item.Value;
-                        sonuc += item.Key.ToString() + ',';
+                    if ((Miktar * double.Parse(urun.Fiyat.ToString())) <= Para)
+                    {                        
+                        Para -= (double.Parse(urun.MiktarKG.ToString()) * double.Parse(urun.Fiyat.ToString()));
+                        UpdateSales(int.Parse(urun.KullaniciId.ToString()), (double.Parse(urun.MiktarKG.ToString()) * double.Parse(urun.Fiyat.ToString())));
+                        Miktar -= double.Parse(urun.MiktarKG.ToString());
+                        urun.MiktarKG = 0;
                     }
                     else
                     {
-                        MessageBox.Show("Yeteri kadar paranız yoktur.");
+                        MessageBox.Show("Alışveriş Yapabilmek İçin Gerekli Tutar : " + (Miktar * double.Parse(urun.Fiyat.ToString())) + " TL'dir. Bakiyeniz Yetersiz.");
+                        break;
                     }
-
                 }
-                
+                else
+                {
+
+                    if ((Miktar * double.Parse(urun.Fiyat.ToString())) <= Para)
+                    { 
+                        Para -= (Miktar * double.Parse(urun.Fiyat.ToString()));
+                        UpdateSales(int.Parse(urun.KullaniciId.ToString()), (Miktar * double.Parse(urun.Fiyat.ToString())));
+                        urun.MiktarKG -= Miktar;
+                        Miktar = 0;
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("Alışveriş Yapabilmek İçin Gerekli Tutar : " + (Miktar * double.Parse(urun.Fiyat.ToString())) + " TL'dir. Bakiyeniz Yetersiz.");
+                        break;
+                    }
+                }
+                if (Miktar == 0)
+                {
+                    break;
+                }
             }
-
-
-            //if (Miktar == 0) MessageBox.Show("Tüm ürünler Alındı. Idleri:" + sonuc.ToString());
-            //else if (Miktar > 0) MessageBox.Show("Yeteri kadar ürünümüz yoktur.Eksik ürün sayısı :"+Miktar.ToString());
-            //DialogResult dialogResult = new DialogResult();
-            //dialogResult = MessageBox.Show("Yine de ürünleri satın almak istiyor musunuz?", "Yetersiz Ürün Miktarı", MessageBoxButtons.YesNo);
-            //if (dialogResult == DialogResult.Yes)
-            //{
-            //    MessageBox.Show("Tüm ürünler Alındı. Idleri:" + sonuc.ToString());
-            //}
-
-            
+            UpdateTable(Urunler, Para);  
         }
 
-        private Dictionary<int,double> ProductList(int UrunId) {
-            Dictionary<int, double> Urunler = new Dictionary<int, double>();
-            SqlCommand komut = new SqlCommand("SELECT   Id, MiktarKG From KullaniciUrun Where UrunID=@p1 order by Fiyat ", baglanti.baglanti());
+        private List<KullaniciUrun> ProductList(int UrunId) {
+            List<KullaniciUrun> Urunler = new List<KullaniciUrun>();
+            SqlCommand komut = new SqlCommand("SELECT  Id,UrunID,MiktarKG,Fiyat,KullaniciID From KullaniciUrun Where UrunID=@p1 order by Fiyat,MiktarKG ", baglanti.baglanti());
             komut.Parameters.AddWithValue("@p1", UrunId);
 
             SqlDataReader dr = komut.ExecuteReader();
             while (dr.Read())
-                Urunler.Add(int.Parse(dr[0].ToString()), double.Parse(dr[1].ToString()));
+            {
+                Urunler.Add(new KullaniciUrun(
+                    int.Parse(dr[0].ToString()),
+                    int.Parse(dr[1].ToString()),
+                    double.Parse(dr[2].ToString()),
+                    double.Parse(dr[3].ToString()),
+                    int.Parse(dr[4].ToString())
+                    ));
+            }
+
             dr.Close();
             komut.ExecuteNonQuery();
             baglanti.baglanti().Close();
             return Urunler;
         }
-        
+
+        private bool UpdateTable(List<KullaniciUrun> urun,double para)
+        {
+            List<KullaniciUrun> urunler = urun;
+            SqlCommand komut;
+            try
+            {
+                foreach (var item in urunler)
+                {
+
+                    komut = new SqlCommand("UPDATE KullaniciUrun SET MiktarKG = @p1 WHERE Id = @p2", baglanti.baglanti());
+                    komut.Parameters.AddWithValue("@p1", double.Parse(item.MiktarKG.ToString()));
+                    komut.Parameters.AddWithValue("@p2", int.Parse(item.Id.ToString()));
+                    komut.ExecuteNonQuery();
+                    baglanti.baglanti().Close();
+                }
+
+                komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari = @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
+                komut.Parameters.AddWithValue("@p1", para);
+                komut.Parameters.AddWithValue("@p2", Login.UserId);
+                komut.ExecuteNonQuery();
+                ParaLabel.Text = para.ToString();
+
+                MessageBox.Show("Satın Alım Başarılı");
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Bir hata oluştu." + e.ToString());
+                return false;
+            }
+        }
+
+        private void UpdateSales(int kullaniciId,double miktar)
+        {
+            SqlCommand komut;
+            try
+            {
+                    komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
+                    komut.Parameters.AddWithValue("@p1", miktar);
+                    komut.Parameters.AddWithValue("@p2", kullaniciId);
+                    komut.ExecuteNonQuery();
+
+                baglanti.baglanti().Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Bir hata oluştu." + e.ToString());
+            }
+        }
     }
 }
