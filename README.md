@@ -16,16 +16,18 @@ Gerçekleştirilmesi İstenilen 4 User Story
 #Yazılımın Bulundurduğu Ekranlar
 1>Login 2>Kayıt Ol 3>Ana Menü 4>Admin
 
-* 1> Login
-  Login içerisinden Kullanıcı Adı, Şifre, Kullanıcı Tipi(Admin, Kullanıcı) bilgilerinin kontrolü gerçekleştirilir. Bunun doğrultusunda form geçişi sağlanır. Bunun yanı sıra "Giriş Yap" butonunun altında "Kayıt Ol" butonu yer almaktadır.
-* 2> Kayıt Ol
-  Kayıt olma ekranı içerisinde genel kullanıcı bilgileri alınarak sisteme eklenir. Bilgiler de herhangi bir şekilde "Null" değer girilemez.
-* 3> Ana Menü
-  Genel anlamda ilk gelişinde "Bakiye" bilgisi sol yanda yer alır,bunun yanı sıra  Hesap, Ürün Satın Al butonları da bu kısımda yer alır.
-  Seçilen işleme göre bileşenlerin görünürlüğü değişmektedir. "Hesap" butonuna tıklandığında sisteme onay başvuruları ile ilgili bileşenler görünürlük kazanır. Ve yapılabilecek olan "Para Ekle" ve "Ürün Ekle" başvuruları yapılabilir.
-  "Ürün Satın Al" butonu ile ise ürün seçimine göre genel ürün fiyatlarını görüntüleyebileceğimiz ve ayrıca altında satın alma işlemi gerçekleştirebileceğimiz bir ekran bizleri karşılar.
-* 4> Admin
-  Onay başvurusu yapılan değerler ve kullanıcıların verileri tablo aracılığıyla görüntülenir. Alttaki tablolar yardımı ile istenirse kullanıcıların ürünleri ve para miktarları değiştirilebilir.
+* 1> Login<br/>
+  Login içerisinden Kullanıcı Adı, Şifre, Kullanıcı Tipi(Admin, Kullanıcı) bilgilerinin kontrolü gerçekleştirilir. Bunun doğrultusunda form geçişi sağlanır. <br/>
+  Bunun yanı sıra "Giriş Yap" butonunun altında "Kayıt Ol" butonu yer almaktadır.<br/>
+* 2> Kayıt Ol<br/>
+  Kayıt olma ekranı içerisinde genel kullanıcı bilgileri alınarak sisteme eklenir. Bilgiler de herhangi bir şekilde "Null" değer girilemez.<br/>
+* 3> Ana Menü<br/>
+  Genel anlamda ilk gelişinde "Bakiye" bilgisi sol yanda yer alır,bunun yanı sıra  Hesap, Ürün Satın Al butonları da bu kısımda yer alır.<br/>
+  Seçilen işleme göre bileşenlerin görünürlüğü değişmektedir. "Hesap" butonuna tıklandığında sisteme onay başvuruları ile ilgili bileşenler görünürlük kazanır. <br/>
+  Ve yapılabilecek olan "Para Ekle" ve "Ürün Ekle" başvuruları yapılabilir.<br/>
+  "Ürün Satın Al" butonu ile ise ürün seçimine göre genel ürün fiyatlarını görüntüleyebileceğimiz ve ayrıca altında satın alma işlemi gerçekleştirebileceğimiz bir ekran bizleri karşılar.<br/>
+* 4> Admin<br/>
+  Onay başvurusu yapılan değerler ve kullanıcıların verileri tablo aracılığıyla görüntülenir. Alttaki tablolar yardımı ile istenirse kullanıcıların ürünleri ve para miktarları değiştirilebilir.<br/>
   
   Yararlanılan Kaynaklar:<br/>
   Murat Yücedağ C# Eğitim Kitabı<br/>
