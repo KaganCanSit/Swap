@@ -1,7 +1,6 @@
-## SWAP
- C# İle Tarım İle Elde Edilen Ürünlerin Genel Pazar İçerisinde Teklif Üzerine Satış Platformu Projesi
+# SWAP - *C# ve SQL İle Tarım İle Elde Edilen Ürünlerin Genel Pazar İçerisinde Teklif Üzerine Satış Platformu Projesi*
 
-Gerçekleştirilmesi İstenilen 4 User Story
+*Gerçekleştirilmesi İstenilen 4 User Story*
 * User Story-1
   a. Sisteme Kayıt (Kullanıcılar aşağıdaki bilgileri yazılıma girerek sisteme kayıt olacaklardır.)
   b. (Kullanıcı Bilgilerinin sisteme eklenmesi [Ad, Soyad, Kullanıcı Adı, Password, TC Kimlik No, Telefon, Email, Adres] )
@@ -13,8 +12,8 @@ Gerçekleştirilmesi İstenilen 4 User Story
   e. Fiyatın oluşması ile alıcının hesabına parasının olması ve satıcının hesabına ise ürünün olması lazım. Eğer alıcının almak istediği ürün var ise otomatik olarak alım işleminin gerçekleşmesi lazım.
 
 
-#Yazılımın Bulundurduğu Ekranlar
-1>Login 2>Kayıt Ol 3>Ana Menü 4>Admin
+*#Yazılımın Bulundurduğu Ekranlar<br/>*
+1>Login<br/> 2>Kayıt Ol<br/> 3>Ana Menü<br/> 4>Admin<br/>
 
 * 1> Login<br/>
   Login içerisinden Kullanıcı Adı, Şifre, Kullanıcı Tipi(Admin, Kullanıcı) bilgilerinin kontrolü gerçekleştirilir. Bunun doğrultusunda form geçişi sağlanır. <br/>
@@ -29,7 +28,7 @@ Gerçekleştirilmesi İstenilen 4 User Story
 * 4> Admin<br/>
   Onay başvurusu yapılan değerler ve kullanıcıların verileri tablo aracılığıyla görüntülenir. Alttaki tablolar yardımı ile istenirse kullanıcıların ürünleri ve para miktarları değiştirilebilir.<br/>
   
-  Yararlanılan Kaynaklar:<br/>
+  *Yararlanılan Kaynaklar:<br/>*
   Murat Yücedağ C# Eğitim Kitabı<br/>
   Murat Yücedağ SQL Ders Videoları >> https://www.youtube.com/playlist?list=PLKnjBHu2xXNP6Qa6u8GLawPnzo1brHZPP<br/>
   Temel SQL Komutları >> http://www.oguzhantas.com/sql-server/295-sql-nedir-temel-sql-komutlari-nelerdir.html<br/>
