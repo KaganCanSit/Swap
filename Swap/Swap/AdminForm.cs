@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Xml;  //Bu önemli XML kullanmak için gerek
 
 namespace Swap
 {
@@ -20,6 +21,75 @@ namespace Swap
         //SQL Sınıfı İle Veri Kaynağımıza Bağlantı Sağlıyoruz.
         SQLBaglantisi baglanti = new SQLBaglantisi();
 
+        //Görünebilirlik Ayarı
+        private void ParaOnayButton_Click(object sender, EventArgs e)
+        {
+            ParaOnayBekleyenlerGB.Visible = true;
+            ParaIslemleriGerceklestirGB.Visible = true;
+            KullaniciyaParaEkleGB.Visible = true;
+            BorsaDurumuGB.Visible = true;
+            HesapMakinesiGB.Visible = true;
+            UrunOnayBekleyenlerGB.Visible = false;
+            UrunIslemleriGerceklestirGB.Visible = false;
+            KullaniciUrunEkleGB.Visible = false;
+        }
+        private void UrunOnayButton_Click(object sender, EventArgs e)
+        {
+            ParaOnayBekleyenlerGB.Visible = false;
+            ParaIslemleriGerceklestirGB.Visible = false;
+            KullaniciyaParaEkleGB.Visible = false;
+            BorsaDurumuGB.Visible = false;
+            HesapMakinesiGB.Visible = false;
+            UrunOnayBekleyenlerGB.Visible = true;
+            UrunIslemleriGerceklestirGB.Visible = true;
+            KullaniciUrunEkleGB.Visible = true;
+        }
+
+        public DataTable source()
+        {
+            DataTable dt = new DataTable();     // DataTable Nesnemizi Yaratıyoruz.
+            DataRow dr;                         // DataTable'ın Satırlarını Tanımlıyoruz.
+
+            dt.Columns.Add(new DataColumn("Adı", typeof(string)));
+            dt.Columns.Add(new DataColumn("Kod", typeof(string)));
+            dt.Columns.Add(new DataColumn("Döviz alış", typeof(string)));
+            dt.Columns.Add(new DataColumn("Döviz satış", typeof(string)));
+            // DataTableımıza 4 sütün ekliyoruz ve değişken tiplerini tanımlıyoruz.
+
+            XmlTextReader rdr = new XmlTextReader("http://www.tcmb.gov.tr/kurlar/today.xml");
+            // XmlTextReader nesnesini yaratıyoruz ve parametre olarak xml dokümanın urlsini veriyoruz
+            // XmlTextReader urlsi belirtilen xml dokümanlarına hızlı ve forward-only giriş imkanı sağlar.
+
+            XmlDocument myxml = new XmlDocument();      // XmlDocument nesnesini yaratıyoruz.
+            myxml.Load(rdr);                            // Load metodu ile xml yüklüyoruz
+
+            XmlNode tarih = myxml.SelectSingleNode("/Tarih_Date/@Tarih");
+            XmlNodeList mylist = myxml.SelectNodes("/Tarih_Date/Currency");
+            XmlNodeList adi = myxml.SelectNodes("/Tarih_Date/Currency/Isim");
+            XmlNodeList kod = myxml.SelectNodes("/Tarih_Date/Currency/@Kod");
+            XmlNodeList doviz_alis = myxml.SelectNodes("/Tarih_Date/Currency/ForexBuying");
+            XmlNodeList doviz_satis = myxml.SelectNodes("/Tarih_Date/Currency/ForexSelling");
+
+            // XmlNodeList cinsinden her bir nodu, SelectSingleNode metoduna nodların xpathini parametre olarak göndererek tanımlıyoruz.
+            //  dataGrid1.CaptionText = tarih.InnerText.ToString() + " tarihli merkez bankası kur bilgileri";
+            // datagridimin captionu ayarlıyoruz.
+            for (int i = 0; i < 12; i++)
+            {
+                dr = dt.NewRow();
+                if (adi.Item(i).InnerText.ToString() == "ABD DOLARI" || adi.Item(i).InnerText.ToString() == "EURO" || adi.Item(i).InnerText.ToString() == "İNGİLİZ STERLİNİ")
+                {
+                    dr[0] = adi.Item(i).InnerText.ToString(); // i. adi nodunun içeriği
+                    // Adı isimli DataColumn un satırlarını  /Tarih_Date/Currency/Isim node ları ile dolduruyoruz.
+                    dr[1] = kod.Item(i).InnerText.ToString();
+                    dr[2] = doviz_alis.Item(i).InnerText.ToString();
+                    dr[3] = doviz_satis.Item(i).InnerText.ToString();
+                    dt.Rows.Add(dr);
+                }
+            }
+            return dt;
+        }
+
+        //Sistemdeki Kullanıcı Bilgileri DataGrid'e Yazılır.
         void KullaniciBilgileriGetir()
         {
             SqlCommand komut3 = new SqlCommand("Select * From Kullanicilar", baglanti.baglanti());
@@ -28,6 +98,7 @@ namespace Swap
             data2.Fill(dt3);
             KullanicilarDatGrid.DataSource = dt3;
         }
+        //Sistemdeki Kullanıcı Urun Bilgileri DataGried'e Yazılır.
         void KullanicilarinUrunBilgisiniGetir()
         {
             SqlCommand komut4 = new SqlCommand("Select * From KullaniciUrun", baglanti.baglanti());
@@ -63,6 +134,9 @@ namespace Swap
         //Form Yüklenirken Gridlerin İçerisini ve ComboBox'ları Tablo Verilerinin Çekilmesi
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            //Borsa Data Gridi İçin Form Yüklenirken Kaynak Belirityoruz.
+            BorsaDataGrid.DataSource = source();
+
             SqlCommand komut = new SqlCommand("Select * From ParaOnay", baglanti.baglanti());
             SqlDataAdapter da = new SqlDataAdapter(komut);
             DataTable dt = new DataTable();
@@ -118,6 +192,16 @@ namespace Swap
                 baglanti.baglanti().Close();
                 KullanicilarinUrunBilgisiniGetir();
             }
+        }
+
+        //Temel Eklenecek Tutarı HEsaplama
+        private void HesaplaBTN_Click(object sender, EventArgs e)
+        {
+            double anapara, eklenecektutar, kur;
+            anapara = Convert.ToDouble(IlkParaTB.Text);
+            eklenecektutar = Convert.ToDouble(EklenecekTutarTB.Text);
+            kur = Convert.ToDouble(ParaAlisFiyatıTB.Text);
+            SonucLabel.Text = "Sonuç: " + (anapara + (eklenecektutar * kur));
         }
     }
 }

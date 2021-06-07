@@ -43,20 +43,31 @@ namespace Swap
         //Görünebilirlik Ayarı
         private void HesapButton_Click(object sender, EventArgs e)
         {
+            FinanceGroupBox.Visible = false;
+            BuyProductGroupBox.Visible = false;
+            SatinAlmaGecmisiGB.Visible = false;
             MoneyGB.Visible = true;
             UrunEkleGB.Visible = true;
             BilgiLabel.Visible = true;
-            FinanceGroupBox.Visible = false;
-            BuyProductGroupBox.Visible = false;
         }
         private void BuyButton_Click(object sender, EventArgs e)
         {
-            FinanceGroupBox.Visible = true;
-            BuyProductGroupBox.Visible = true;
             MoneyGB.Visible = false;
             UrunEkleGB.Visible = false;
             BilgiLabel.Visible = false;
-            
+            SatinAlmaGecmisiGB.Visible = false;
+            FinanceGroupBox.Visible = true;
+            BuyProductGroupBox.Visible = true;
+        }
+
+        private void SatinAlmaGecmisiFB_Click(object sender, EventArgs e)
+        {
+            MoneyGB.Visible = false;
+            UrunEkleGB.Visible = false;
+            BilgiLabel.Visible = false;
+            FinanceGroupBox.Visible = false;
+            BuyProductGroupBox.Visible = false;
+            SatinAlmaGecmisiGB.Visible = true;
         }
 
         SQLBaglantisi baglanti = new SQLBaglantisi();
@@ -65,15 +76,16 @@ namespace Swap
         private void ParaEkleButton_Click(object sender, EventArgs e)
         {
             //Değerlerin Boş Girilmesi Durumunda Uyarı Vermesini Sağlıyoruz.
-            if (ParaEkleTB.Text == "")
+            if (ParaEkleTB.Text == "" || ParaTipleriComboBox.Text== "")
             {
                 MessageBox.Show("Değerlerden Birini Veya Birkaçı Boş Bıraktınız. Kontrol Ediniz.");
             }
             else
             {
-                SqlCommand komut = new SqlCommand("insert into ParaOnay(KullaniciID, ParaMiktari)" + "values(@p0, @p1)", baglanti.baglanti());
+                SqlCommand komut = new SqlCommand("insert into ParaOnay(KullaniciID, ParaMiktari,ParaTipiAd)" + "values(@p0, @p1,@p2)", baglanti.baglanti());
                 komut.Parameters.AddWithValue("@p0", Login.UserId);
                 komut.Parameters.AddWithValue("@p1", ParaEkleTB.Text);
+                komut.Parameters.AddWithValue("@p2", ParaTipleriComboBox.Text);
                 komut.ExecuteNonQuery();
 
                 MessageBox.Show("İşleminiz Başarıyla Gerçekleşti. Verdiğiniz Bilgiler İçin Teşekkür Ederiz." + Environment.NewLine + "En Kısa Sürede Onaylacağız.");
@@ -112,6 +124,23 @@ namespace Swap
             FinanceDataGrid.DataSource = dt;            
         }
 
+        //Alım Geçmişi Butonu
+        private void DateButton_Click(object sender, EventArgs e)
+        {
+            SqlCommand komut = new SqlCommand("Select * From AlimKayitTablosu Where KullaniciID=" +Login.UserId + "and Tarih BETWEEN @t1 and @t2", baglanti.baglanti());
+            SqlDataAdapter data = new SqlDataAdapter(komut);
+            data.SelectCommand.Parameters.AddWithValue("@t1", StartDatePicker.Value);
+            data.SelectCommand.Parameters.AddWithValue("@t2", EndDatePicker.Value);
+            DataTable dt = new DataTable();
+            data.Fill(dt);
+            SatinAlmaGecmisiDataGrid.DataSource = dt;
+        }
+
+
+
+
+
+
         //Ürün Satın Al >> Ürün Satın Alma, Ürünlerin Sistemden Düşülmesi, Para Değerlerinin Düzeltilmesi İşlemleri.
         private void SatinAlButton_Click(object sender, EventArgs e)
         {
@@ -125,8 +154,10 @@ namespace Swap
                  if (Miktar >=  double.Parse(urun.MiktarKG.ToString()))
                 {
                     if ((Miktar * double.Parse(urun.Fiyat.ToString())) <= Para)
-                    {                        
-                        Para -= (double.Parse(urun.MiktarKG.ToString()) * double.Parse(urun.Fiyat.ToString()));
+                    {
+                        double uruncarpfiyat = 0;
+                        uruncarpfiyat = double.Parse(urun.MiktarKG.ToString()) * double.Parse(urun.Fiyat.ToString());
+                        Para -= (uruncarpfiyat+(uruncarpfiyat/100));
                         UpdateSales(int.Parse(urun.KullaniciId.ToString()), (double.Parse(urun.MiktarKG.ToString()) * double.Parse(urun.Fiyat.ToString())));
                         Miktar -= double.Parse(urun.MiktarKG.ToString());
                         urun.MiktarKG = 0;
@@ -193,7 +224,6 @@ namespace Swap
             {
                 foreach (var item in urunler)
                 {
-
                     komut = new SqlCommand("UPDATE KullaniciUrun SET MiktarKG = @p1 WHERE Id = @p2", baglanti.baglanti());
                     komut.Parameters.AddWithValue("@p1", double.Parse(item.MiktarKG.ToString()));
                     komut.Parameters.AddWithValue("@p2", int.Parse(item.Id.ToString()));
@@ -222,10 +252,16 @@ namespace Swap
             SqlCommand komut;
             try
             {
-                    komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
-                    komut.Parameters.AddWithValue("@p1", miktar);
-                    komut.Parameters.AddWithValue("@p2", kullaniciId);
-                    komut.ExecuteNonQuery();
+                komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
+                komut.Parameters.AddWithValue("@p1", miktar);
+                komut.Parameters.AddWithValue("@p2", kullaniciId);
+                komut.ExecuteNonQuery();
+
+                //Muhasebe Kullanıcısına %1 Komisyonu İçin Para Ekleme.
+                komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
+                komut.Parameters.AddWithValue("@p1", (miktar/100));
+                komut.Parameters.AddWithValue("@p2", 2);
+                komut.ExecuteNonQuery();
 
                 baglanti.baglanti().Close();
             }
@@ -234,5 +270,7 @@ namespace Swap
                 MessageBox.Show("Bir hata oluştu." + e.ToString());
             }
         }
+
     }
+
 }

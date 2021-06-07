@@ -23,7 +23,7 @@ namespace Swap
          */
         public SqlConnection baglanti()
         {
-            SqlConnection baglan = new SqlConnection(@"Data Source=DESKTOP-A47I2NU\KAGANCANSIT;Initial Catalog = Swap; Integrated Security=True");
+            SqlConnection baglan = new SqlConnection(@"Data Source=KAGANCANSIT\KAGANCANSIT;Initial Catalog = Swap; Integrated Security=True");
             baglan.Open();
             return baglan;
         }

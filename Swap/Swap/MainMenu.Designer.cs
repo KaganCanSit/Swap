@@ -31,6 +31,7 @@ namespace Swap
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.MenuPanel = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.SatinAlmaGecmisiFB = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ParaLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.MoneyLabel = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@ namespace Swap
             this.HesapButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ParaEkleButton = new System.Windows.Forms.Button();
             this.MoneyGB = new System.Windows.Forms.GroupBox();
+            this.ParaTipleriComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ParaEkleTB = new System.Windows.Forms.TextBox();
@@ -64,6 +66,14 @@ namespace Swap
             this.UrunEkleSecimCB = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.BilgiLabel = new System.Windows.Forms.Label();
+            this.SatinAlmaGecmisiDataGrid = new System.Windows.Forms.DataGridView();
+            this.DateInformatinLabel = new System.Windows.Forms.Label();
+            this.StartDateLabel = new System.Windows.Forms.Label();
+            this.EndDateLabel = new System.Windows.Forms.Label();
+            this.DateButton = new System.Windows.Forms.Button();
+            this.SatinAlmaGecmisiGB = new System.Windows.Forms.GroupBox();
+            this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,12 +82,15 @@ namespace Swap
             this.FinanceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FinanceDataGrid)).BeginInit();
             this.UrunEkleGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SatinAlmaGecmisiDataGrid)).BeginInit();
+            this.SatinAlmaGecmisiGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
             // 
             this.MenuPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MenuPanel.BackgroundImage")));
             this.MenuPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MenuPanel.Controls.Add(this.SatinAlmaGecmisiFB);
             this.MenuPanel.Controls.Add(this.ParaLabel);
             this.MenuPanel.Controls.Add(this.pictureBox2);
             this.MenuPanel.Controls.Add(this.MoneyLabel);
@@ -93,8 +106,45 @@ namespace Swap
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Quality = 10;
-            this.MenuPanel.Size = new System.Drawing.Size(202, 450);
+            this.MenuPanel.Size = new System.Drawing.Size(202, 466);
             this.MenuPanel.TabIndex = 0;
+            // 
+            // SatinAlmaGecmisiFB
+            // 
+            this.SatinAlmaGecmisiFB.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.SatinAlmaGecmisiFB.BackColor = System.Drawing.Color.Transparent;
+            this.SatinAlmaGecmisiFB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SatinAlmaGecmisiFB.BorderRadius = 0;
+            this.SatinAlmaGecmisiFB.ButtonText = "Satın Alma Geçmişi";
+            this.SatinAlmaGecmisiFB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SatinAlmaGecmisiFB.DisabledColor = System.Drawing.Color.Gray;
+            this.SatinAlmaGecmisiFB.ForeColor = System.Drawing.Color.White;
+            this.SatinAlmaGecmisiFB.Iconcolor = System.Drawing.Color.Transparent;
+            this.SatinAlmaGecmisiFB.Iconimage = ((System.Drawing.Image)(resources.GetObject("SatinAlmaGecmisiFB.Iconimage")));
+            this.SatinAlmaGecmisiFB.Iconimage_right = null;
+            this.SatinAlmaGecmisiFB.Iconimage_right_Selected = null;
+            this.SatinAlmaGecmisiFB.Iconimage_Selected = null;
+            this.SatinAlmaGecmisiFB.IconMarginLeft = 15;
+            this.SatinAlmaGecmisiFB.IconMarginRight = 0;
+            this.SatinAlmaGecmisiFB.IconRightVisible = false;
+            this.SatinAlmaGecmisiFB.IconRightZoom = 0D;
+            this.SatinAlmaGecmisiFB.IconVisible = false;
+            this.SatinAlmaGecmisiFB.IconZoom = 90D;
+            this.SatinAlmaGecmisiFB.IsTab = false;
+            this.SatinAlmaGecmisiFB.Location = new System.Drawing.Point(12, 238);
+            this.SatinAlmaGecmisiFB.Name = "SatinAlmaGecmisiFB";
+            this.SatinAlmaGecmisiFB.Normalcolor = System.Drawing.Color.Transparent;
+            this.SatinAlmaGecmisiFB.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.SatinAlmaGecmisiFB.OnHoverTextColor = System.Drawing.Color.White;
+            this.SatinAlmaGecmisiFB.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SatinAlmaGecmisiFB.selected = false;
+            this.SatinAlmaGecmisiFB.Size = new System.Drawing.Size(165, 36);
+            this.SatinAlmaGecmisiFB.TabIndex = 7;
+            this.SatinAlmaGecmisiFB.Text = "Satın Alma Geçmişi";
+            this.SatinAlmaGecmisiFB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SatinAlmaGecmisiFB.Textcolor = System.Drawing.Color.White;
+            this.SatinAlmaGecmisiFB.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SatinAlmaGecmisiFB.Click += new System.EventHandler(this.SatinAlmaGecmisiFB_Click);
             // 
             // ParaLabel
             // 
@@ -221,7 +271,7 @@ namespace Swap
             // 
             // ParaEkleButton
             // 
-            this.ParaEkleButton.Location = new System.Drawing.Point(83, 185);
+            this.ParaEkleButton.Location = new System.Drawing.Point(86, 219);
             this.ParaEkleButton.Name = "ParaEkleButton";
             this.ParaEkleButton.Size = new System.Drawing.Size(75, 23);
             this.ParaEkleButton.TabIndex = 1;
@@ -231,17 +281,31 @@ namespace Swap
             // 
             // MoneyGB
             // 
+            this.MoneyGB.Controls.Add(this.ParaTipleriComboBox);
             this.MoneyGB.Controls.Add(this.label2);
             this.MoneyGB.Controls.Add(this.label1);
             this.MoneyGB.Controls.Add(this.ParaEkleTB);
             this.MoneyGB.Controls.Add(this.ParaEkleButton);
-            this.MoneyGB.Location = new System.Drawing.Point(207, 16);
+            this.MoneyGB.Location = new System.Drawing.Point(207, 28);
             this.MoneyGB.Name = "MoneyGB";
             this.MoneyGB.Size = new System.Drawing.Size(249, 299);
             this.MoneyGB.TabIndex = 2;
             this.MoneyGB.TabStop = false;
             this.MoneyGB.Text = "Para Ekle";
             this.MoneyGB.Visible = false;
+            // 
+            // ParaTipleriComboBox
+            // 
+            this.ParaTipleriComboBox.FormattingEnabled = true;
+            this.ParaTipleriComboBox.Items.AddRange(new object[] {
+            "TL",
+            "DOLAR",
+            "EURO",
+            "STERLİN"});
+            this.ParaTipleriComboBox.Location = new System.Drawing.Point(70, 187);
+            this.ParaTipleriComboBox.Name = "ParaTipleriComboBox";
+            this.ParaTipleriComboBox.Size = new System.Drawing.Size(113, 21);
+            this.ParaTipleriComboBox.TabIndex = 5;
             // 
             // label2
             // 
@@ -266,7 +330,7 @@ namespace Swap
             // 
             this.ParaEkleTB.Location = new System.Drawing.Point(70, 159);
             this.ParaEkleTB.Name = "ParaEkleTB";
-            this.ParaEkleTB.Size = new System.Drawing.Size(100, 20);
+            this.ParaEkleTB.Size = new System.Drawing.Size(113, 20);
             this.ParaEkleTB.TabIndex = 2;
             // 
             // BuyProductGroupBox
@@ -277,7 +341,7 @@ namespace Swap
             this.BuyProductGroupBox.Controls.Add(this.UrunMiktariTextBox);
             this.BuyProductGroupBox.Controls.Add(this.label7);
             this.BuyProductGroupBox.Controls.Add(this.SatinAlButton);
-            this.BuyProductGroupBox.Location = new System.Drawing.Point(207, 215);
+            this.BuyProductGroupBox.Location = new System.Drawing.Point(206, 227);
             this.BuyProductGroupBox.Name = "BuyProductGroupBox";
             this.BuyProductGroupBox.Size = new System.Drawing.Size(676, 221);
             this.BuyProductGroupBox.TabIndex = 14;
@@ -346,7 +410,7 @@ namespace Swap
             this.FinanceGroupBox.Controls.Add(this.UrunSecimiComboBox);
             this.FinanceGroupBox.Controls.Add(this.FinanceLabel);
             this.FinanceGroupBox.Controls.Add(this.GoruntuleButton);
-            this.FinanceGroupBox.Location = new System.Drawing.Point(206, 16);
+            this.FinanceGroupBox.Location = new System.Drawing.Point(206, 28);
             this.FinanceGroupBox.Name = "FinanceGroupBox";
             this.FinanceGroupBox.Size = new System.Drawing.Size(677, 191);
             this.FinanceGroupBox.TabIndex = 5;
@@ -405,7 +469,7 @@ namespace Swap
             this.UrunEkleGB.Controls.Add(this.UrunEkleButton);
             this.UrunEkleGB.Controls.Add(this.UrunEkleSecimCB);
             this.UrunEkleGB.Controls.Add(this.label3);
-            this.UrunEkleGB.Location = new System.Drawing.Point(461, 16);
+            this.UrunEkleGB.Location = new System.Drawing.Point(461, 28);
             this.UrunEkleGB.Name = "UrunEkleGB";
             this.UrunEkleGB.Size = new System.Drawing.Size(422, 299);
             this.UrunEkleGB.TabIndex = 3;
@@ -490,7 +554,7 @@ namespace Swap
             // BilgiLabel
             // 
             this.BilgiLabel.AutoSize = true;
-            this.BilgiLabel.Location = new System.Drawing.Point(235, 361);
+            this.BilgiLabel.Location = new System.Drawing.Point(235, 373);
             this.BilgiLabel.Name = "BilgiLabel";
             this.BilgiLabel.Size = new System.Drawing.Size(602, 39);
             this.BilgiLabel.TabIndex = 4;
@@ -498,12 +562,91 @@ namespace Swap
             this.BilgiLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BilgiLabel.Visible = false;
             // 
+            // SatinAlmaGecmisiDataGrid
+            // 
+            this.SatinAlmaGecmisiDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SatinAlmaGecmisiDataGrid.Location = new System.Drawing.Point(6, 123);
+            this.SatinAlmaGecmisiDataGrid.Name = "SatinAlmaGecmisiDataGrid";
+            this.SatinAlmaGecmisiDataGrid.Size = new System.Drawing.Size(655, 283);
+            this.SatinAlmaGecmisiDataGrid.TabIndex = 0;
+            // 
+            // DateInformatinLabel
+            // 
+            this.DateInformatinLabel.AutoSize = true;
+            this.DateInformatinLabel.Location = new System.Drawing.Point(16, 28);
+            this.DateInformatinLabel.Name = "DateInformatinLabel";
+            this.DateInformatinLabel.Size = new System.Drawing.Size(320, 13);
+            this.DateInformatinLabel.TabIndex = 1;
+            this.DateInformatinLabel.Text = "Satin Alimlarinizi Goruntulemek Istediginiz Zaman Dilimlerini Yaziniz.";
+            // 
+            // StartDateLabel
+            // 
+            this.StartDateLabel.AutoSize = true;
+            this.StartDateLabel.Location = new System.Drawing.Point(19, 61);
+            this.StartDateLabel.Name = "StartDateLabel";
+            this.StartDateLabel.Size = new System.Drawing.Size(85, 13);
+            this.StartDateLabel.TabIndex = 2;
+            this.StartDateLabel.Text = "Baslangic Tarihi:";
+            // 
+            // EndDateLabel
+            // 
+            this.EndDateLabel.AutoSize = true;
+            this.EndDateLabel.Location = new System.Drawing.Point(19, 90);
+            this.EndDateLabel.Name = "EndDateLabel";
+            this.EndDateLabel.Size = new System.Drawing.Size(58, 13);
+            this.EndDateLabel.TabIndex = 3;
+            this.EndDateLabel.Text = "Bitis Tarihi:";
+            // 
+            // DateButton
+            // 
+            this.DateButton.Location = new System.Drawing.Point(339, 55);
+            this.DateButton.Name = "DateButton";
+            this.DateButton.Size = new System.Drawing.Size(94, 48);
+            this.DateButton.TabIndex = 6;
+            this.DateButton.Text = "Geçmişi Görüntüle";
+            this.DateButton.UseVisualStyleBackColor = true;
+            this.DateButton.Click += new System.EventHandler(this.DateButton_Click);
+            // 
+            // SatinAlmaGecmisiGB
+            // 
+            this.SatinAlmaGecmisiGB.Controls.Add(this.EndDatePicker);
+            this.SatinAlmaGecmisiGB.Controls.Add(this.StartDatePicker);
+            this.SatinAlmaGecmisiGB.Controls.Add(this.DateButton);
+            this.SatinAlmaGecmisiGB.Controls.Add(this.EndDateLabel);
+            this.SatinAlmaGecmisiGB.Controls.Add(this.StartDateLabel);
+            this.SatinAlmaGecmisiGB.Controls.Add(this.DateInformatinLabel);
+            this.SatinAlmaGecmisiGB.Controls.Add(this.SatinAlmaGecmisiDataGrid);
+            this.SatinAlmaGecmisiGB.Location = new System.Drawing.Point(206, 28);
+            this.SatinAlmaGecmisiGB.Name = "SatinAlmaGecmisiGB";
+            this.SatinAlmaGecmisiGB.Size = new System.Drawing.Size(676, 420);
+            this.SatinAlmaGecmisiGB.TabIndex = 15;
+            this.SatinAlmaGecmisiGB.TabStop = false;
+            this.SatinAlmaGecmisiGB.Text = "SatinAlmaGecmisiGB";
+            this.SatinAlmaGecmisiGB.Visible = false;
+            // 
+            // StartDatePicker
+            // 
+            this.StartDatePicker.Location = new System.Drawing.Point(110, 55);
+            this.StartDatePicker.Name = "StartDatePicker";
+            this.StartDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.StartDatePicker.TabIndex = 7;
+            this.StartDatePicker.Value = new System.DateTime(2021, 6, 5, 0, 0, 0, 0);
+            // 
+            // EndDatePicker
+            // 
+            this.EndDatePicker.Location = new System.Drawing.Point(110, 87);
+            this.EndDatePicker.Name = "EndDatePicker";
+            this.EndDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.EndDatePicker.TabIndex = 8;
+            this.EndDatePicker.Value = new System.DateTime(2021, 6, 5, 0, 0, 0, 0);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(889, 450);
+            this.ClientSize = new System.Drawing.Size(890, 466);
+            this.Controls.Add(this.SatinAlmaGecmisiGB);
             this.Controls.Add(this.BuyProductGroupBox);
             this.Controls.Add(this.BilgiLabel);
             this.Controls.Add(this.FinanceGroupBox);
@@ -530,6 +673,9 @@ namespace Swap
             ((System.ComponentModel.ISupportInitialize)(this.FinanceDataGrid)).EndInit();
             this.UrunEkleGB.ResumeLayout(false);
             this.UrunEkleGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SatinAlmaGecmisiDataGrid)).EndInit();
+            this.SatinAlmaGecmisiGB.ResumeLayout(false);
+            this.SatinAlmaGecmisiGB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,5 +717,15 @@ namespace Swap
         private System.Windows.Forms.ComboBox UrunSecimComboBox;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.Label ParaLabel;
+        private System.Windows.Forms.ComboBox ParaTipleriComboBox;
+        private Bunifu.Framework.UI.BunifuFlatButton SatinAlmaGecmisiFB;
+        private System.Windows.Forms.DataGridView SatinAlmaGecmisiDataGrid;
+        private System.Windows.Forms.Label DateInformatinLabel;
+        private System.Windows.Forms.Label StartDateLabel;
+        private System.Windows.Forms.Label EndDateLabel;
+        private System.Windows.Forms.Button DateButton;
+        private System.Windows.Forms.GroupBox SatinAlmaGecmisiGB;
+        private System.Windows.Forms.DateTimePicker EndDatePicker;
+        private System.Windows.Forms.DateTimePicker StartDatePicker;
     }
 }
