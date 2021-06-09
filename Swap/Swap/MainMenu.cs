@@ -70,7 +70,6 @@ namespace Swap
         private void MainMenu_Load(object sender, EventArgs e)
         {
             UrunIdComboBoxVeri();
-            TalepleriOku();
         }
 
         //Hesap >> Para Ekleme Onay Başvurusu
@@ -137,14 +136,11 @@ namespace Swap
             SatinAlmaGecmisiDataGrid.DataSource = dt;
         }
 
-
-
-
-
         //Ürün Satın Al >> Ürün Satın Alma, Ürünlerin Sistemden Düşülmesi, Para Değerlerinin Düzeltilmesi İşlemleri.
         private void SatinAlButton_Click(object sender, EventArgs e)
         {
             int UrunId = Convert.ToInt32(UrunSecimiComboBox.Text);
+            int Miktar2 = Convert.ToInt32(UrunMiktariTextBox.Text);
             double Miktar = Convert.ToDouble(UrunMiktariTextBox.Text);
             double Para = Convert.ToDouble(ParaLabel.Text);
 
@@ -152,7 +148,7 @@ namespace Swap
             foreach (var urun in Urunler) {
 
                  if (Miktar >=  double.Parse(urun.MiktarKG.ToString()))
-                {
+                 {
                     if ((Miktar * double.Parse(urun.Fiyat.ToString())) <= Para)
                     {
                         double uruncarpfiyat = 0;
@@ -190,7 +186,7 @@ namespace Swap
                     break;
                 }
             }
-            UpdateTable(Urunler, Para);  
+            UpdateTable(Urunler, Para, Miktar2);  
         }
 
         private List<KullaniciUrun> ProductList(int UrunId) {
@@ -206,32 +202,54 @@ namespace Swap
                     int.Parse(dr[1].ToString()),
                     double.Parse(dr[2].ToString()),
                     double.Parse(dr[3].ToString()),
-                    int.Parse(dr[4].ToString())
-                    ));
+                    int.Parse(dr[4].ToString())));
             }
-
             dr.Close();
             komut.ExecuteNonQuery();
             baglanti.baglanti().Close();
             return Urunler;
         }
 
-        private bool UpdateTable(List<KullaniciUrun> urun,double para)
+        int fiyat;
+        private bool UpdateTable(List<KullaniciUrun> urun,double para,int miktar)
         {
             List<KullaniciUrun> urunler = urun;
             SqlCommand komut;
+            miktar = Convert.ToInt32(miktar);
             try
             {
+                int i = 1;
                 foreach (var item in urunler)
                 {
+                    //Satıcıdan satın alma işlemi tamamlanma sonrası ürünlerin düşülmesi
                     komut = new SqlCommand("UPDATE KullaniciUrun SET MiktarKG = @p1 WHERE Id = @p2", baglanti.baglanti());
                     komut.Parameters.AddWithValue("@p1", double.Parse(item.MiktarKG.ToString()));
                     komut.Parameters.AddWithValue("@p2", int.Parse(item.Id.ToString()));
                     komut.ExecuteNonQuery();
                     baglanti.baglanti().Close();
-                }
 
+                    if (i==1)
+                    {
+                        //Kullanıcının Satın Alma İşlemini Kayıt Altına Alıyoruz
+                        komut = new SqlCommand("insert into AlimKayitTablosu(KullaniciID,Tarih,UrunID,Miktar,AlimTutari,UygulamaKomisyonu)" + "values(@p0,@p1,@p2,@p3,@p4,@p5)", baglanti.baglanti());
+                        komut.Parameters.AddWithValue("@p0", Login.UserId);
+                        komut.Parameters.AddWithValue("@p1", DateTime.Now.ToShortDateString());
+                        komut.Parameters.AddWithValue("@p2", int.Parse(item.UrunId.ToString()));
+                        komut.Parameters.AddWithValue("@p3", Convert.ToInt32(miktar));
+                        komut.Parameters.AddWithValue("@p4", int.Parse(item.Fiyat.ToString()));
+                        fiyat = Convert.ToInt32(item.Fiyat);
+                        komut.Parameters.AddWithValue("@p5", int.Parse(((item.Fiyat * miktar) / 100).ToString()));
+                        komut.ExecuteNonQuery();
+                        baglanti.baglanti().Close();
+                        i++;
+                    }
+                }
+                
+                //Kullanıcıdan Ürün Fiyatının Düşülmesi
                 komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari = @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
+
+                para = para - (miktar * fiyat) / 100;
+
                 komut.Parameters.AddWithValue("@p1", para);
                 komut.Parameters.AddWithValue("@p2", Login.UserId);
                 komut.ExecuteNonQuery();
@@ -252,17 +270,18 @@ namespace Swap
             SqlCommand komut;
             try
             {
+                //Satıcıya Parasının Ödenmesi
                 komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
                 komut.Parameters.AddWithValue("@p1", miktar);
                 komut.Parameters.AddWithValue("@p2", kullaniciId);
                 komut.ExecuteNonQuery();
+                baglanti.baglanti().Close();
 
                 //Muhasebe Kullanıcısına %1 Komisyonu İçin Para Ekleme.
                 komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
-                komut.Parameters.AddWithValue("@p1", (miktar/100));
+                komut.Parameters.AddWithValue("@p1",(miktar / 100));
                 komut.Parameters.AddWithValue("@p2", 2);
                 komut.ExecuteNonQuery();
-
                 baglanti.baglanti().Close();
             }
             catch (Exception e)
@@ -272,28 +291,46 @@ namespace Swap
         }
 
 
-
-
-
-
-
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------
         private void TalepOlusturBtn_Click(object sender, EventArgs e)
         {
-            //UrunSecimComboBox
-            //TalepKGTB
-            //TalepFiyatTB
+            if (TalepKGTB.Text == "" || TalepFiyatTB.Text == " ")
+            {
+                MessageBox.Show("Değerlerden Birini Veya Birkaçı Boş Bıraktınız. Kontrol Ediniz.");
+            }
+            else
+            {
+                int sonuc;
+                sonuc = Convert.ToInt32(TalepFiyatTB.Text) * Convert.ToInt32(TalepKGTB.Text);
+                if (sonuc > Convert.ToInt32(ParaLabel.Text))
+                {
+                    MessageBox.Show("Talep Ettiginiz Urun Toplam Hesap Bakiyesini Asiyor. Islem Gercekleşemez.");
+                    Environment.Exit(0);
+                }
+
+                SqlCommand komut = new SqlCommand("insert into TalepTablosu(KullaniciID,UrunID,MiktarKG,Fiyat,isActive)" + "values(@p1,@p2,@p3,@p4,@p5)", baglanti.baglanti());
+                komut.Parameters.AddWithValue("@p1", Login.UserId);
+                komut.Parameters.AddWithValue("@p2", UrunSecimComboBox.Text);
+                komut.Parameters.AddWithValue("@p3", TalepKGTB.Text);
+                komut.Parameters.AddWithValue("@p4", TalepFiyatTB.Text);
+                komut.Parameters.AddWithValue("@p5", 1);
+                komut.ExecuteNonQuery();
+
+                MessageBox.Show("İşleminiz Başarıyla Gerçekleşti. Verdiğiniz Bilgiler İçin Teşekkür Ederiz." + Environment.NewLine + "En Kısa Sürede Talebiniz Hakkında Dönüş Sağlayacağız.");
+                baglanti.baglanti().Close();
+            }
+
+            TalepleriOku();
+
         }
         public void TalepleriOku()
         {
+            int TalepID, KullaniciID, UrunID, MiktarKG, Fiyat, isActive;
+            int KUID,KUKullaniciID, KUUrunID, KUMiktarKG, KUFiyat;         //Kullanıcı Ürün Tablosu = KU
+
             SqlCommand komut = new SqlCommand("Select * From TalepTablosu", baglanti.baglanti());
             SqlDataReader oku = komut.ExecuteReader();
 
-            int TalepID, KullaniciID, UrunID, MiktarKG, Fiyat, isActive;
-            //Kullanıcı Ürün Tablosu = KU
-            int KUID, KUKullaniciID, KUUrunID, KUMiktarKG, KUFiyat;
-
-            //!!!Bu sorgunun en büyük hatası tablo içerisinde NULL veri varsa okuma işlemi gerçekleşmiyor.
             while (oku.Read())
             {
                 TalepID = Convert.ToInt32(oku["TalepID"]);
@@ -303,109 +340,94 @@ namespace Swap
                 Fiyat = Convert.ToInt32(oku["Fiyat"]);
                 isActive = Convert.ToInt32(oku["isActive"]);
 
-                //MessageBox.Show(TalepID.ToString() + " " + KullaniciID.ToString() + " " + UrunID.ToString() + " " + MiktarKG.ToString() + " " + Fiyat.ToString() + " " + isActive.ToString());
                 if(isActive==1)
                 {
-                    SqlCommand komut2 = new SqlCommand("Select * From KullaniciUrun", baglanti.baglanti());
-                    SqlDataReader KUoku = komut2.ExecuteReader();
+                    komut = new SqlCommand("Select * From KullaniciUrun", baglanti.baglanti());
+                    SqlDataReader KUoku = komut.ExecuteReader();
 
                     while (KUoku.Read())
                     {
-                        KUID = Convert.ToInt32(KUoku["ID"]);
+                        KUID = Convert.ToInt32(KUoku["Id"]);
                         KUKullaniciID = Convert.ToInt32(KUoku["KullaniciID"]);
                         KUUrunID = Convert.ToInt32(KUoku["UrunID"]);
                         KUMiktarKG = Convert.ToInt32(KUoku["MiktarKG"]);
                         KUFiyat = Convert.ToInt32(KUoku["Fiyat"]);
 
-                        //MessageBox.Show(KUID.ToString() + " " + KUKullaniciID.ToString() + " " + KUUrunID.ToString() + " " + KUMiktarKG.ToString() + " " + KUFiyat.ToString());
-                        if(UrunID==KUUrunID && MiktarKG<= KUMiktarKG && Fiyat<=KUFiyat)
+                        if (UrunID == KUUrunID && MiktarKG <= KUMiktarKG && KUFiyat <= Fiyat)
                         {
-                            int paramiktari, dusulecekpara, komisyon, yeniurunadedi;
-                            paramiktari = dusulecekpara = komisyon = yeniurunadedi = 0;
+                            int paramiktari, dusulecekpara, komisyon;
 
                             paramiktari = MiktarKG * Fiyat;
                             komisyon = paramiktari / 100;
                             dusulecekpara = komisyon + paramiktari;
-                            yeniurunadedi = KUMiktarKG - MiktarKG;
 
                             //Satıcıya Kazandığı Paranın Atanması
                             komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
-                            komut.Parameters.AddWithValue("@p1", paramiktari);
                             komut.Parameters.AddWithValue("@p2", KUKullaniciID);
+                            komut.Parameters.AddWithValue("@p1", paramiktari);
                             komut.ExecuteNonQuery();
+                            baglanti.baglanti().Close();
+                            //Satıcının Sahip Olduğu Ürün Adetinin Düşürülmesi
+                            komut = new SqlCommand("UPDATE KullaniciUrun SET MiktarKG -= @p1 WHERE Id = @p2", baglanti.baglanti());
+                            komut.Parameters.AddWithValue("@p2", KUID);
+                            komut.Parameters.AddWithValue("@p1", MiktarKG);
+                            komut.ExecuteNonQuery();
+                            baglanti.baglanti().Close();
 
-                            //Satın Alan Kişiden Paranın Düşülmesi
+                            //Satın Alan Kişiden Paranın Tahsil Edilmesi
                             komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari -= @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
                             komut.Parameters.AddWithValue("@p1", dusulecekpara);
-                            komut.Parameters.AddWithValue("@p2", Login.UserId);
+                            komut.Parameters.AddWithValue("@p2", KullaniciID);
                             komut.ExecuteNonQuery();
+                            baglanti.baglanti().Close();
 
-                            //Muhasebe Kullanıcısına %1 Komisyonu İçin Para Ekleme.
+                            //Muhasebe Kullanıcısına % 1 Komisyonu İçin Para Ekleme.
                             komut = new SqlCommand("UPDATE Kullanicilar SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
                             komut.Parameters.AddWithValue("@p1", komisyon);
                             komut.Parameters.AddWithValue("@p2", 2);
                             komut.ExecuteNonQuery();
-
-                            if(KullaniciID == Login.UserId)
-                            {
-                                MessageBox.Show("Talep Ettiginiz Urun Sisteme Eklendi. Isleminiz otomatik olarak gerçekleştirildi.");
-                            }
+                            baglanti.baglanti().Close();
 
                             //isActive hücresinin 1'den 0'a çekilmesi. Bu sayede başka bir sorguda yeniden kontrol edilmesi önlenmiş olacak.
-                            komut = new SqlCommand("UPDATE TalepTablosu SET isActive += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
+                            komut = new SqlCommand("UPDATE TalepTablosu SET isActive = @p1 WHERE TalepID = @p2", baglanti.baglanti());
                             komut.Parameters.AddWithValue("@p1", 0);
-                            komut.Parameters.AddWithValue("@p2", KullaniciID);
+                            komut.Parameters.AddWithValue("@p2", TalepID);
                             komut.ExecuteNonQuery();
+                            baglanti.baglanti().Close();
 
+                            ParaLabel.Text = Convert.ToString(Convert.ToInt32(ParaLabel.Text) - dusulecekpara);
+
+                            //Kullanıcının Satın Alma İşlemini Kayıt Altına Alıyoruz
+                            komut = new SqlCommand("insert into AlimKayitTablosu(KullaniciID,Tarih,UrunID,Miktar,AlimTutari,UygulamaKomisyonu)" + "values(@p0,@p1,@p2,@p3,@p4,@p5)", baglanti.baglanti());
+                            komut.Parameters.AddWithValue("@p0", Login.UserId);
+                            komut.Parameters.AddWithValue("@p1", DateTime.Now.ToShortDateString());
+                            komut.Parameters.AddWithValue("@p2", UrunID);
+                            komut.Parameters.AddWithValue("@p3", MiktarKG);
+                            komut.Parameters.AddWithValue("@p4", Fiyat);
+                            komut.Parameters.AddWithValue("@p5", komisyon);
+                            komut.ExecuteNonQuery();
+                            baglanti.baglanti().Close();
+
+                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşti. Verdiğiniz Bilgiler İçin Teşekkür Ederiz." + Environment.NewLine + "En Kısa Sürede Talebiniz Hakkında Dönüş Sağlayacağız.");
+
+                            if (KullaniciID == Login.UserId)
+                            {
+                                MessageBox.Show("Talep Ettiginiz Urun Sisteme Eklendi. Isleminiz otomatik olarak gerçekleştirildi.");
+                            }             
                         }
                     }
                     KUoku.Close();
-                    komut2.ExecuteNonQuery();
+                    komut.ExecuteNonQuery();
                     baglanti.baglanti().Close();
                 }
-            
+                else
+                {
+                    break;
+                }
             }
             oku.Close();
-            komut.ExecuteNonQuery(); 
+            komut.ExecuteNonQuery();
             baglanti.baglanti().Close();
         }
     }
-
 }
-
-
-
-/*
- * MessageBox.Show(Convert.ToString(TalepID) + " " + Convert.ToString(KullaniciID) + " " + Convert.ToString(UrunID) + " " +
-                     " " + Convert.ToString(MiktarKG) + " " + Convert.ToString(Fiyat) + " " + Convert.ToString(isActive));
-
-                if (isActive==1)
-                {
-                    SqlCommand komut2 = new SqlCommand("Select * From KullaniciUrun Where UrunID=" + UrunID + "AND MiktarKG >=" + MiktarKG + "AND Fiyat <=" + Fiyat, baglanti.baglanti());
-                    SqlDataReader rdr = komut2.ExecuteReader();
-                    List<KullaniciUrun> veriler = new List<KullaniciUrun>();
-
-                    //KullaniciUrunTablosu = KU
-                    int KUId, KUKullaniciID, KUUrunID, KUMiktarKG, KUFiyat;
-
-                    while (rdr.Read())
-                    {
-                        veriler.Add(new KullaniciUrun(
-                            KUId = int.Parse(reader[0].ToString()),
-                            KUKullaniciID = int.Parse(reader[1].ToString()),
-                            KUUrunID = int.Parse(reader[2].ToString()),
-                            KUMiktarKG = int.Parse(reader[3].ToString()),
-                            KUFiyat = int.Parse(reader[4].ToString())
-                            ));
-
-
-                        MessageBox.Show(Convert.ToString(KUId) + " " + Convert.ToString(KUKullaniciID) + " " + Convert.ToString(KUUrunID) + " " +
-                             " " + Convert.ToString(KUMiktarKG) + " " + Convert.ToString(KUFiyat));
-                        break;
-                        //komut = new SqlCommand("UPDATE KullaniciUrun SET ParaMiktari += @p1 WHERE KullaniciID = @p2", baglanti.baglanti());
-                        //komut.Parameters.AddWithValue("@p1", miktar);
-                        //komut.Parameters.AddWithValue("@p2", kullaniciId);
-                        //komut.ExecuteNonQuery();
-                    }
-                    rdr.Close();
- */
