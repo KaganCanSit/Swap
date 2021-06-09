@@ -79,7 +79,6 @@
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLBaglantisi.cs" />
-    <Compile Include="TalepOlustur.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
