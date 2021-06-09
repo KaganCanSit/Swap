@@ -18,28 +18,6 @@ namespace Swap
             InitializeComponent();
         }
 
-        //ComboBox içerisinde UrunID'lerinin çekilmesi.
-        void UrunIdComboBoxVeri()
-        {
-            SqlCommand komut = new SqlCommand("Select * From AnaUrunTablosu", baglanti.baglanti());
-            SqlDataAdapter da = new SqlDataAdapter(komut);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            UrunEkleSecimCB.ValueMember = "UrunID";
-            UrunEkleSecimCB.DataSource = dt;
-            UrunSecimiComboBox.ValueMember = "UrunID";
-            UrunSecimiComboBox.DataSource = dt;
-            UrunSecimComboBox.ValueMember = "UrunID";
-            UrunSecimComboBox.DataSource = dt;
-        }
-
-        //ComboBox'ların İçerisini Hatali Seçim Olmaması İçin Ürün Id'leri İle Dolduruyoruz.
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-            UrunIdComboBoxVeri();
-        }
-        
-
         //Görünebilirlik Ayarı
         private void HesapButton_Click(object sender, EventArgs e)
         {
@@ -70,7 +48,30 @@ namespace Swap
             SatinAlmaGecmisiGB.Visible = true;
         }
 
+        //Sql Bağlantı Adresimizi Alıyoruz.
         SQLBaglantisi baglanti = new SQLBaglantisi();
+
+        //ComboBox içerisinde UrunID'lerinin çekilmesi.
+        void UrunIdComboBoxVeri()
+        {
+            SqlCommand komut = new SqlCommand("Select * From AnaUrunTablosu", baglanti.baglanti());
+            SqlDataAdapter da = new SqlDataAdapter(komut);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            UrunEkleSecimCB.ValueMember = "UrunID";
+            UrunEkleSecimCB.DataSource = dt;
+            UrunSecimiComboBox.ValueMember = "UrunID";
+            UrunSecimiComboBox.DataSource = dt;
+            UrunSecimComboBox.ValueMember = "UrunID";
+            UrunSecimComboBox.DataSource = dt;
+        }
+
+        //ComboBox'ların İçerisini Hatali Seçim Olmaması İçin Ürün Id'leri İle Dolduruyoruz.
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            UrunIdComboBoxVeri();
+            TalepIzle();
+        }
 
         //Hesap >> Para Ekleme Onay Başvurusu
         private void ParaEkleButton_Click(object sender, EventArgs e)
@@ -127,7 +128,7 @@ namespace Swap
         //Alım Geçmişi Butonu
         private void DateButton_Click(object sender, EventArgs e)
         {
-            SqlCommand komut = new SqlCommand("Select * From AlimKayitTablosu Where KullaniciID=" +Login.UserId + "and Tarih BETWEEN @t1 and @t2", baglanti.baglanti());
+            SqlCommand komut = new SqlCommand("Select * From AlimKayitTablosu Where KullaniciID=" + Login.UserId + "and Tarih BETWEEN @t1 and @t2", baglanti.baglanti());
             SqlDataAdapter data = new SqlDataAdapter(komut);
             data.SelectCommand.Parameters.AddWithValue("@t1", StartDatePicker.Value);
             data.SelectCommand.Parameters.AddWithValue("@t2", EndDatePicker.Value);
@@ -135,7 +136,6 @@ namespace Swap
             data.Fill(dt);
             SatinAlmaGecmisiDataGrid.DataSource = dt;
         }
-
 
 
 
@@ -271,6 +271,46 @@ namespace Swap
             }
         }
 
+
+
+
+
+
+
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------
+        private void TalepOlusturBtn_Click(object sender, EventArgs e)
+        {
+            //UrunSecimComboBox
+            //TalepKGTB
+            //TalepFiyatTB
+        }
+        void TalepIzle()
+        {
+            SqlCommand komut = new SqlCommand("Select TalepID, KullaniciID, UrunID, MiktarKG, Fiyat, isActive From TalepTablosu", baglanti.baglanti());
+            SqlDataReader reader = komut.ExecuteReader();
+            List<TalepOlustur> kullaniciverileri = new List<TalepOlustur>();
+            int TalepID, KullaniciID, UrunID, MiktarKG, Fiyat, isActive;
+
+            //!!!Bu sorgunun en büyük hatası tablo içerisinde NULL veri varsa okuma işlemi gerçekleşmiyor.
+            while(reader.Read())
+            {
+                kullaniciverileri.Add(new TalepOlustur(
+                    TalepID=int.Parse(reader[0].ToString()),
+                    KullaniciID=int.Parse(reader[1].ToString()),
+                    UrunID=int.Parse(reader[2].ToString()),
+                    MiktarKG=int.Parse(reader[3].ToString()),
+                    Fiyat=int.Parse(reader[4].ToString()),
+                    isActive=int.Parse(reader[5].ToString())
+                    ));
+
+                //MessageBox.Show(Convert.ToString(TalepID) + " " + Convert.ToString(KullaniciID) + " " + Convert.ToString(UrunID) + " " +
+                //    " " + Convert.ToString(MiktarKG) + " " + Convert.ToString(Fiyat) + " " + Convert.ToString(isActive));
+            }
+
+            reader.Close();
+            komut.ExecuteNonQuery();
+            baglanti.baglanti().Close();
+        }
     }
 
 }

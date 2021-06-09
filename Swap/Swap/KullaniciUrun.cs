@@ -14,8 +14,6 @@ namespace Swap
         //private double Fiyat ;
         //private int KullaniciId;
 
-
-
         public KullaniciUrun() { 
         }
         public KullaniciUrun(int Id, int UrunId, double MiktarKG, double Fiyat, int KullaniciId)

@@ -45,6 +45,12 @@ namespace Swap
             this.label1 = new System.Windows.Forms.Label();
             this.ParaEkleTB = new System.Windows.Forms.TextBox();
             this.BuyProductGroupBox = new System.Windows.Forms.GroupBox();
+            this.TalepFiyatTB = new System.Windows.Forms.TextBox();
+            this.TalepOlusturBtn = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TalepKGTB = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.UrunSecimComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -72,8 +78,8 @@ namespace Swap
             this.EndDateLabel = new System.Windows.Forms.Label();
             this.DateButton = new System.Windows.Forms.Button();
             this.SatinAlmaGecmisiGB = new System.Windows.Forms.GroupBox();
-            this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
             this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -106,7 +112,7 @@ namespace Swap
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Quality = 10;
-            this.MenuPanel.Size = new System.Drawing.Size(202, 466);
+            this.MenuPanel.Size = new System.Drawing.Size(202, 483);
             this.MenuPanel.TabIndex = 0;
             // 
             // SatinAlmaGecmisiFB
@@ -131,7 +137,7 @@ namespace Swap
             this.SatinAlmaGecmisiFB.IconVisible = false;
             this.SatinAlmaGecmisiFB.IconZoom = 90D;
             this.SatinAlmaGecmisiFB.IsTab = false;
-            this.SatinAlmaGecmisiFB.Location = new System.Drawing.Point(12, 238);
+            this.SatinAlmaGecmisiFB.Location = new System.Drawing.Point(9, 227);
             this.SatinAlmaGecmisiFB.Name = "SatinAlmaGecmisiFB";
             this.SatinAlmaGecmisiFB.Normalcolor = System.Drawing.Color.Transparent;
             this.SatinAlmaGecmisiFB.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -163,10 +169,10 @@ namespace Swap
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(-12, 301);
+            this.pictureBox2.Location = new System.Drawing.Point(-11, 316);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(230, 253);
+            this.pictureBox2.Size = new System.Drawing.Size(228, 253);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
@@ -206,7 +212,7 @@ namespace Swap
             this.BuyButton.IconVisible = false;
             this.BuyButton.IconZoom = 90D;
             this.BuyButton.IsTab = false;
-            this.BuyButton.Location = new System.Drawing.Point(12, 203);
+            this.BuyButton.Location = new System.Drawing.Point(9, 190);
             this.BuyButton.Name = "BuyButton";
             this.BuyButton.Normalcolor = System.Drawing.Color.Transparent;
             this.BuyButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -254,7 +260,7 @@ namespace Swap
             this.HesapButton.IconVisible = false;
             this.HesapButton.IconZoom = 90D;
             this.HesapButton.IsTab = false;
-            this.HesapButton.Location = new System.Drawing.Point(12, 163);
+            this.HesapButton.Location = new System.Drawing.Point(9, 156);
             this.HesapButton.Name = "HesapButton";
             this.HesapButton.Normalcolor = System.Drawing.Color.Transparent;
             this.HesapButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -335,6 +341,12 @@ namespace Swap
             // 
             // BuyProductGroupBox
             // 
+            this.BuyProductGroupBox.Controls.Add(this.TalepFiyatTB);
+            this.BuyProductGroupBox.Controls.Add(this.TalepOlusturBtn);
+            this.BuyProductGroupBox.Controls.Add(this.label12);
+            this.BuyProductGroupBox.Controls.Add(this.label11);
+            this.BuyProductGroupBox.Controls.Add(this.TalepKGTB);
+            this.BuyProductGroupBox.Controls.Add(this.label10);
             this.BuyProductGroupBox.Controls.Add(this.label9);
             this.BuyProductGroupBox.Controls.Add(this.UrunSecimComboBox);
             this.BuyProductGroupBox.Controls.Add(this.label8);
@@ -343,26 +355,81 @@ namespace Swap
             this.BuyProductGroupBox.Controls.Add(this.SatinAlButton);
             this.BuyProductGroupBox.Location = new System.Drawing.Point(206, 227);
             this.BuyProductGroupBox.Name = "BuyProductGroupBox";
-            this.BuyProductGroupBox.Size = new System.Drawing.Size(676, 221);
+            this.BuyProductGroupBox.Size = new System.Drawing.Size(676, 244);
             this.BuyProductGroupBox.TabIndex = 14;
             this.BuyProductGroupBox.TabStop = false;
             this.BuyProductGroupBox.Text = "Ürün Satın Al";
             this.BuyProductGroupBox.Visible = false;
             // 
+            // TalepFiyatTB
+            // 
+            this.TalepFiyatTB.Location = new System.Drawing.Point(498, 185);
+            this.TalepFiyatTB.Name = "TalepFiyatTB";
+            this.TalepFiyatTB.Size = new System.Drawing.Size(121, 20);
+            this.TalepFiyatTB.TabIndex = 23;
+            // 
+            // TalepOlusturBtn
+            // 
+            this.TalepOlusturBtn.Location = new System.Drawing.Point(455, 211);
+            this.TalepOlusturBtn.Name = "TalepOlusturBtn";
+            this.TalepOlusturBtn.Size = new System.Drawing.Size(100, 23);
+            this.TalepOlusturBtn.TabIndex = 22;
+            this.TalepOlusturBtn.Text = "Talep Oluştur";
+            this.TalepOlusturBtn.UseVisualStyleBackColor = true;
+            this.TalepOlusturBtn.Click += new System.EventHandler(this.TalepOlusturBtn_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(351, 188);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(101, 13);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Talep Ettiğiniz Fiyat:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(351, 159);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 13);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Talep Ettiğiniz Miktar(KG):";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TalepKGTB
+            // 
+            this.TalepKGTB.Location = new System.Drawing.Point(498, 156);
+            this.TalepKGTB.Name = "TalepKGTB";
+            this.TalepKGTB.Size = new System.Drawing.Size(121, 20);
+            this.TalepKGTB.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(351, 96);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(255, 52);
+            this.label10.TabIndex = 18;
+            this.label10.Text = resources.GetString("label10.Text");
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(94, 21);
+            this.label9.Location = new System.Drawing.Point(16, 96);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(472, 39);
+            this.label9.Size = new System.Drawing.Size(259, 39);
             this.label9.TabIndex = 17;
-            this.label9.Text = resources.GetString("label9.Text");
+            this.label9.Text = ">>Mevcut Ürünlerden Al<<\r\nÜrün satın alma işleminiz en düşük fiyattan başlayarak\r" +
+    "\ngirmiş olduğunuz kilograma göre gerçekleşir. \r\n";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UrunSecimComboBox
             // 
             this.UrunSecimComboBox.FormattingEnabled = true;
-            this.UrunSecimComboBox.Location = new System.Drawing.Point(258, 109);
+            this.UrunSecimComboBox.Location = new System.Drawing.Point(245, 63);
             this.UrunSecimComboBox.Name = "UrunSecimComboBox";
             this.UrunSecimComboBox.Size = new System.Drawing.Size(121, 21);
             this.UrunSecimComboBox.TabIndex = 16;
@@ -370,7 +437,7 @@ namespace Swap
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(249, 137);
+            this.label8.Location = new System.Drawing.Point(84, 147);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(141, 13);
             this.label8.TabIndex = 15;
@@ -379,7 +446,7 @@ namespace Swap
             // 
             // UrunMiktariTextBox
             // 
-            this.UrunMiktariTextBox.Location = new System.Drawing.Point(258, 158);
+            this.UrunMiktariTextBox.Location = new System.Drawing.Point(87, 171);
             this.UrunMiktariTextBox.Name = "UrunMiktariTextBox";
             this.UrunMiktariTextBox.Size = new System.Drawing.Size(121, 20);
             this.UrunMiktariTextBox.TabIndex = 14;
@@ -387,7 +454,7 @@ namespace Swap
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(223, 77);
+            this.label7.Location = new System.Drawing.Point(216, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(187, 26);
             this.label7.TabIndex = 4;
@@ -396,7 +463,7 @@ namespace Swap
             // 
             // SatinAlButton
             // 
-            this.SatinAlButton.Location = new System.Drawing.Point(277, 184);
+            this.SatinAlButton.Location = new System.Drawing.Point(109, 198);
             this.SatinAlButton.Name = "SatinAlButton";
             this.SatinAlButton.Size = new System.Drawing.Size(75, 23);
             this.SatinAlButton.TabIndex = 1;
@@ -567,7 +634,7 @@ namespace Swap
             this.SatinAlmaGecmisiDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SatinAlmaGecmisiDataGrid.Location = new System.Drawing.Point(6, 123);
             this.SatinAlmaGecmisiDataGrid.Name = "SatinAlmaGecmisiDataGrid";
-            this.SatinAlmaGecmisiDataGrid.Size = new System.Drawing.Size(655, 283);
+            this.SatinAlmaGecmisiDataGrid.Size = new System.Drawing.Size(655, 314);
             this.SatinAlmaGecmisiDataGrid.TabIndex = 0;
             // 
             // DateInformatinLabel
@@ -616,21 +683,13 @@ namespace Swap
             this.SatinAlmaGecmisiGB.Controls.Add(this.StartDateLabel);
             this.SatinAlmaGecmisiGB.Controls.Add(this.DateInformatinLabel);
             this.SatinAlmaGecmisiGB.Controls.Add(this.SatinAlmaGecmisiDataGrid);
-            this.SatinAlmaGecmisiGB.Location = new System.Drawing.Point(206, 28);
+            this.SatinAlmaGecmisiGB.Location = new System.Drawing.Point(207, 28);
             this.SatinAlmaGecmisiGB.Name = "SatinAlmaGecmisiGB";
-            this.SatinAlmaGecmisiGB.Size = new System.Drawing.Size(676, 420);
+            this.SatinAlmaGecmisiGB.Size = new System.Drawing.Size(676, 443);
             this.SatinAlmaGecmisiGB.TabIndex = 15;
             this.SatinAlmaGecmisiGB.TabStop = false;
             this.SatinAlmaGecmisiGB.Text = "SatinAlmaGecmisiGB";
             this.SatinAlmaGecmisiGB.Visible = false;
-            // 
-            // StartDatePicker
-            // 
-            this.StartDatePicker.Location = new System.Drawing.Point(110, 55);
-            this.StartDatePicker.Name = "StartDatePicker";
-            this.StartDatePicker.Size = new System.Drawing.Size(200, 20);
-            this.StartDatePicker.TabIndex = 7;
-            this.StartDatePicker.Value = new System.DateTime(2021, 6, 5, 0, 0, 0, 0);
             // 
             // EndDatePicker
             // 
@@ -640,12 +699,20 @@ namespace Swap
             this.EndDatePicker.TabIndex = 8;
             this.EndDatePicker.Value = new System.DateTime(2021, 6, 5, 0, 0, 0, 0);
             // 
+            // StartDatePicker
+            // 
+            this.StartDatePicker.Location = new System.Drawing.Point(110, 55);
+            this.StartDatePicker.Name = "StartDatePicker";
+            this.StartDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.StartDatePicker.TabIndex = 7;
+            this.StartDatePicker.Value = new System.DateTime(2021, 6, 5, 0, 0, 0, 0);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(890, 466);
+            this.ClientSize = new System.Drawing.Size(889, 483);
             this.Controls.Add(this.SatinAlmaGecmisiGB);
             this.Controls.Add(this.BuyProductGroupBox);
             this.Controls.Add(this.BilgiLabel);
@@ -727,5 +794,11 @@ namespace Swap
         private System.Windows.Forms.GroupBox SatinAlmaGecmisiGB;
         private System.Windows.Forms.DateTimePicker EndDatePicker;
         private System.Windows.Forms.DateTimePicker StartDatePicker;
+        private System.Windows.Forms.TextBox TalepFiyatTB;
+        private System.Windows.Forms.Button TalepOlusturBtn;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox TalepKGTB;
+        private System.Windows.Forms.Label label10;
     }
 }

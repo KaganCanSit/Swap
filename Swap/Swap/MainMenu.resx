@@ -584,10 +584,11 @@ gerçekleşmektedir. Sisteme
  yatırdğınız tutarı bildirin.
 En kısa sürede onaylanacaktır.</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Ürün satın alma işleminiz en düşük fiyattan başlayarak girmiş olduğunuz kilograma göre gerçekleşir. 
-Örneğin isteğiniz 20kg ise  2tl'den 10kg aldıktan sonra başka 2tl'den ürün bulunmuyorsa bir üst 
-ücretten devam eder. Yeterli bakiyeniz varsa işlem gerçekleşir ve bakiyenizden düşülür.</value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>&gt;&gt;İstenilen Fiyata Satın Alma Talebi Oluştur&lt;&lt;
+Alıcı olarak kendiniz belirli fiyat ve kg ile satın alma
+talebi oluşturabilirsiniz. Eğer sistem üzerine belirttiğiniz
+fiyatta ürün girilirse işlem otomatik gerçekleşir.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Hesabınıza ürünlerinizin eklenebilmesi için kalite kontol şartları altında 

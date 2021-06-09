@@ -32,6 +32,9 @@ namespace Swap
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.HesaplaButton = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.UrunOnayButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.SwapLogoLabel = new System.Windows.Forms.Label();
+            this.ParaOnayButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.KullaniciUrunEkleGB = new System.Windows.Forms.GroupBox();
             this.KullaniciIDComboBox2 = new System.Windows.Forms.ComboBox();
             this.UrunIDComboBox = new System.Windows.Forms.ComboBox();
@@ -42,9 +45,6 @@ namespace Swap
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.UrunEkle = new System.Windows.Forms.Button();
-            this.SwapLogoLabel = new System.Windows.Forms.Label();
-            this.ParaOnayButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ParaOnayDataGrid = new System.Windows.Forms.DataGridView();
             this.UrunOnayDataGrid = new System.Windows.Forms.DataGridView();
             this.ParaOnayBekleyenlerGB = new System.Windows.Forms.GroupBox();
@@ -52,6 +52,7 @@ namespace Swap
             this.KullanicilarDatGrid = new System.Windows.Forms.DataGridView();
             this.KullaniciUrunDataGrid = new System.Windows.Forms.DataGridView();
             this.KullaniciyaParaEkleGB = new System.Windows.Forms.GroupBox();
+            this.UyariLabel = new System.Windows.Forms.Label();
             this.KullaniciIDComboBox = new System.Windows.Forms.ComboBox();
             this.ParaEkleButton = new System.Windows.Forms.Button();
             this.SonParaTB = new System.Windows.Forms.TextBox();
@@ -70,10 +71,9 @@ namespace Swap
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.UyariLabel = new System.Windows.Forms.Label();
             this.HesaplaButton.SuspendLayout();
-            this.KullaniciUrunEkleGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.KullaniciUrunEkleGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParaOnayDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UrunOnayDataGrid)).BeginInit();
             this.ParaOnayBekleyenlerGB.SuspendLayout();
@@ -144,6 +144,69 @@ namespace Swap
             this.UrunOnayButton.Textcolor = System.Drawing.Color.White;
             this.UrunOnayButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UrunOnayButton.Click += new System.EventHandler(this.UrunOnayButton_Click);
+            // 
+            // SwapLogoLabel
+            // 
+            this.SwapLogoLabel.AutoSize = true;
+            this.SwapLogoLabel.BackColor = System.Drawing.Color.Transparent;
+            this.SwapLogoLabel.Font = new System.Drawing.Font("Lato", 10F);
+            this.SwapLogoLabel.ForeColor = System.Drawing.Color.White;
+            this.SwapLogoLabel.Location = new System.Drawing.Point(46, 205);
+            this.SwapLogoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SwapLogoLabel.Name = "SwapLogoLabel";
+            this.SwapLogoLabel.Size = new System.Drawing.Size(134, 34);
+            this.SwapLogoLabel.TabIndex = 11;
+            this.SwapLogoLabel.Text = "Modern dünyada\r\ntarıma dair alışveriş...";
+            this.SwapLogoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ParaOnayButton
+            // 
+            this.ParaOnayButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.ParaOnayButton.BackColor = System.Drawing.Color.Transparent;
+            this.ParaOnayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ParaOnayButton.BorderRadius = 0;
+            this.ParaOnayButton.ButtonText = "Para Onay İşlemleri";
+            this.ParaOnayButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ParaOnayButton.DisabledColor = System.Drawing.Color.Gray;
+            this.ParaOnayButton.ForeColor = System.Drawing.Color.White;
+            this.ParaOnayButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.ParaOnayButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("ParaOnayButton.Iconimage")));
+            this.ParaOnayButton.Iconimage_right = null;
+            this.ParaOnayButton.Iconimage_right_Selected = null;
+            this.ParaOnayButton.Iconimage_Selected = null;
+            this.ParaOnayButton.IconMarginLeft = 15;
+            this.ParaOnayButton.IconMarginRight = 0;
+            this.ParaOnayButton.IconRightVisible = false;
+            this.ParaOnayButton.IconRightZoom = 0D;
+            this.ParaOnayButton.IconVisible = false;
+            this.ParaOnayButton.IconZoom = 90D;
+            this.ParaOnayButton.IsTab = false;
+            this.ParaOnayButton.Location = new System.Drawing.Point(27, 289);
+            this.ParaOnayButton.Name = "ParaOnayButton";
+            this.ParaOnayButton.Normalcolor = System.Drawing.Color.Transparent;
+            this.ParaOnayButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.ParaOnayButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.ParaOnayButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ParaOnayButton.selected = false;
+            this.ParaOnayButton.Size = new System.Drawing.Size(165, 36);
+            this.ParaOnayButton.TabIndex = 8;
+            this.ParaOnayButton.Text = "Para Onay İşlemleri";
+            this.ParaOnayButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ParaOnayButton.Textcolor = System.Drawing.Color.White;
+            this.ParaOnayButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ParaOnayButton.Click += new System.EventHandler(this.ParaOnayButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(25, 59);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(167, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // KullaniciUrunEkleGB
             // 
@@ -240,69 +303,6 @@ namespace Swap
             this.UrunEkle.UseVisualStyleBackColor = true;
             this.UrunEkle.Click += new System.EventHandler(this.UrunEkle_Click);
             // 
-            // SwapLogoLabel
-            // 
-            this.SwapLogoLabel.AutoSize = true;
-            this.SwapLogoLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SwapLogoLabel.Font = new System.Drawing.Font("Lato", 10F);
-            this.SwapLogoLabel.ForeColor = System.Drawing.Color.White;
-            this.SwapLogoLabel.Location = new System.Drawing.Point(46, 205);
-            this.SwapLogoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SwapLogoLabel.Name = "SwapLogoLabel";
-            this.SwapLogoLabel.Size = new System.Drawing.Size(134, 34);
-            this.SwapLogoLabel.TabIndex = 11;
-            this.SwapLogoLabel.Text = "Modern dünyada\r\ntarıma dair alışveriş...";
-            this.SwapLogoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ParaOnayButton
-            // 
-            this.ParaOnayButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.ParaOnayButton.BackColor = System.Drawing.Color.Transparent;
-            this.ParaOnayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ParaOnayButton.BorderRadius = 0;
-            this.ParaOnayButton.ButtonText = "Para Onay İşlemleri";
-            this.ParaOnayButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ParaOnayButton.DisabledColor = System.Drawing.Color.Gray;
-            this.ParaOnayButton.ForeColor = System.Drawing.Color.White;
-            this.ParaOnayButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.ParaOnayButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("ParaOnayButton.Iconimage")));
-            this.ParaOnayButton.Iconimage_right = null;
-            this.ParaOnayButton.Iconimage_right_Selected = null;
-            this.ParaOnayButton.Iconimage_Selected = null;
-            this.ParaOnayButton.IconMarginLeft = 15;
-            this.ParaOnayButton.IconMarginRight = 0;
-            this.ParaOnayButton.IconRightVisible = false;
-            this.ParaOnayButton.IconRightZoom = 0D;
-            this.ParaOnayButton.IconVisible = false;
-            this.ParaOnayButton.IconZoom = 90D;
-            this.ParaOnayButton.IsTab = false;
-            this.ParaOnayButton.Location = new System.Drawing.Point(27, 289);
-            this.ParaOnayButton.Name = "ParaOnayButton";
-            this.ParaOnayButton.Normalcolor = System.Drawing.Color.Transparent;
-            this.ParaOnayButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.ParaOnayButton.OnHoverTextColor = System.Drawing.Color.White;
-            this.ParaOnayButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ParaOnayButton.selected = false;
-            this.ParaOnayButton.Size = new System.Drawing.Size(165, 36);
-            this.ParaOnayButton.TabIndex = 8;
-            this.ParaOnayButton.Text = "Para Onay İşlemleri";
-            this.ParaOnayButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ParaOnayButton.Textcolor = System.Drawing.Color.White;
-            this.ParaOnayButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ParaOnayButton.Click += new System.EventHandler(this.ParaOnayButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(25, 59);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(167, 128);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // ParaOnayDataGrid
             // 
             this.ParaOnayDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -372,6 +372,16 @@ namespace Swap
             this.KullaniciyaParaEkleGB.TabStop = false;
             this.KullaniciyaParaEkleGB.Text = "Kullanıcıya Para Ekle";
             this.KullaniciyaParaEkleGB.Visible = false;
+            // 
+            // UyariLabel
+            // 
+            this.UyariLabel.AutoSize = true;
+            this.UyariLabel.Location = new System.Drawing.Point(353, 65);
+            this.UyariLabel.Name = "UyariLabel";
+            this.UyariLabel.Size = new System.Drawing.Size(179, 26);
+            this.UyariLabel.TabIndex = 6;
+            this.UyariLabel.Text = "! En son eklenecek olan tutarı\r\n virgülsüz bir tam değer olarak giriniz.";
+            this.UyariLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // KullaniciIDComboBox
             // 
@@ -542,16 +552,6 @@ namespace Swap
             this.label5.TabIndex = 0;
             this.label5.Text = "Kullanıcının Şu Anki Parası:";
             // 
-            // UyariLabel
-            // 
-            this.UyariLabel.AutoSize = true;
-            this.UyariLabel.Location = new System.Drawing.Point(353, 65);
-            this.UyariLabel.Name = "UyariLabel";
-            this.UyariLabel.Size = new System.Drawing.Size(179, 26);
-            this.UyariLabel.TabIndex = 6;
-            this.UyariLabel.Text = "! En son eklenecek olan tutarı\r\n virgülsüz bir tam değer olarak giriniz.";
-            this.UyariLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,9 +573,9 @@ namespace Swap
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.HesaplaButton.ResumeLayout(false);
             this.HesaplaButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.KullaniciUrunEkleGB.ResumeLayout(false);
             this.KullaniciUrunEkleGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ParaOnayDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UrunOnayDataGrid)).EndInit();
             this.ParaOnayBekleyenlerGB.ResumeLayout(false);

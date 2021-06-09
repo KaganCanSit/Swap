@@ -45,41 +45,33 @@ namespace Swap
             KullaniciUrunEkleGB.Visible = true;
         }
 
-        public DataTable source()
+        //Para Değerlerini Çekilerek DataGrid Üzerinde Gösterilmesi
+        public DataTable Source()
         {
-            DataTable dt = new DataTable();     // DataTable Nesnemizi Yaratıyoruz.
-            DataRow dr;                         // DataTable'ın Satırlarını Tanımlıyoruz.
+            DataTable dt = new DataTable();
+            DataRow dr;
 
             dt.Columns.Add(new DataColumn("Adı", typeof(string)));
             dt.Columns.Add(new DataColumn("Kod", typeof(string)));
             dt.Columns.Add(new DataColumn("Döviz alış", typeof(string)));
             dt.Columns.Add(new DataColumn("Döviz satış", typeof(string)));
-            // DataTableımıza 4 sütün ekliyoruz ve değişken tiplerini tanımlıyoruz.
 
             XmlTextReader rdr = new XmlTextReader("http://www.tcmb.gov.tr/kurlar/today.xml");
-            // XmlTextReader nesnesini yaratıyoruz ve parametre olarak xml dokümanın urlsini veriyoruz
-            // XmlTextReader urlsi belirtilen xml dokümanlarına hızlı ve forward-only giriş imkanı sağlar.
 
-            XmlDocument myxml = new XmlDocument();      // XmlDocument nesnesini yaratıyoruz.
-            myxml.Load(rdr);                            // Load metodu ile xml yüklüyoruz
+            XmlDocument myxml = new XmlDocument();
+            myxml.Load(rdr);
 
-            XmlNode tarih = myxml.SelectSingleNode("/Tarih_Date/@Tarih");
-            XmlNodeList mylist = myxml.SelectNodes("/Tarih_Date/Currency");
             XmlNodeList adi = myxml.SelectNodes("/Tarih_Date/Currency/Isim");
             XmlNodeList kod = myxml.SelectNodes("/Tarih_Date/Currency/@Kod");
             XmlNodeList doviz_alis = myxml.SelectNodes("/Tarih_Date/Currency/ForexBuying");
             XmlNodeList doviz_satis = myxml.SelectNodes("/Tarih_Date/Currency/ForexSelling");
 
-            // XmlNodeList cinsinden her bir nodu, SelectSingleNode metoduna nodların xpathini parametre olarak göndererek tanımlıyoruz.
-            //  dataGrid1.CaptionText = tarih.InnerText.ToString() + " tarihli merkez bankası kur bilgileri";
-            // datagridimin captionu ayarlıyoruz.
             for (int i = 0; i < 12; i++)
             {
                 dr = dt.NewRow();
                 if (adi.Item(i).InnerText.ToString() == "ABD DOLARI" || adi.Item(i).InnerText.ToString() == "EURO" || adi.Item(i).InnerText.ToString() == "İNGİLİZ STERLİNİ")
                 {
-                    dr[0] = adi.Item(i).InnerText.ToString(); // i. adi nodunun içeriği
-                    // Adı isimli DataColumn un satırlarını  /Tarih_Date/Currency/Isim node ları ile dolduruyoruz.
+                    dr[0] = adi.Item(i).InnerText.ToString();
                     dr[1] = kod.Item(i).InnerText.ToString();
                     dr[2] = doviz_alis.Item(i).InnerText.ToString();
                     dr[3] = doviz_satis.Item(i).InnerText.ToString();
@@ -135,7 +127,7 @@ namespace Swap
         private void AdminForm_Load(object sender, EventArgs e)
         {
             //Borsa Data Gridi İçin Form Yüklenirken Kaynak Belirityoruz.
-            BorsaDataGrid.DataSource = source();
+            BorsaDataGrid.DataSource = Source();
 
             SqlCommand komut = new SqlCommand("Select * From ParaOnay", baglanti.baglanti());
             SqlDataAdapter da = new SqlDataAdapter(komut);
