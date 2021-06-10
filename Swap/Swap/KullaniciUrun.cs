@@ -10,7 +10,7 @@ namespace Swap
     {
         public KullaniciUrun() { 
         }
-        public KullaniciUrun(int Id, int UrunId, double MiktarKG, double Fiyat, int KullaniciId)
+        public KullaniciUrun(int Id, int UrunId, int MiktarKG, int Fiyat, int KullaniciId)
         {
             this.Id = Id;
             this.KullaniciId = KullaniciId;
@@ -22,8 +22,8 @@ namespace Swap
         public int Id { get; set; }
         public int KullaniciId { get; set; }
         public int UrunId { get; set; }
-        public double MiktarKG { get; set; }
-        public double Fiyat { get; set; }
+        public int MiktarKG { get; set; }
+        public int Fiyat { get; set; }
         
     }
 }
