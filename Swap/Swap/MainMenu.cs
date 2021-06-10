@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace Swap
 {
@@ -16,6 +19,7 @@ namespace Swap
         public MainMenu()
         {
             InitializeComponent();
+            TalepleriOku();
         }
 
         //Görünebilirlik Ayarı
@@ -121,19 +125,55 @@ namespace Swap
             SqlDataAdapter da = new SqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            FinanceDataGrid.DataSource = dt;            
+            FinanceDataGrid.DataSource = dt;
+            baglanti.baglanti().Close();
         }
 
         //Alım Geçmişi Butonu
         private void DateButton_Click(object sender, EventArgs e)
         {
-            SqlCommand komut = new SqlCommand("Select * From AlimKayitTablosu Where KullaniciID=" + Login.UserId + "and Tarih BETWEEN @t1 and @t2", baglanti.baglanti());
+            SqlCommand komut = new SqlCommand("Select * From AlimKayitTablosu Where Tarih BETWEEN @t1 and @t2 and KullaniciID=" + Login.UserId, baglanti.baglanti());
             SqlDataAdapter data = new SqlDataAdapter(komut);
             data.SelectCommand.Parameters.AddWithValue("@t1", StartDatePicker.Value);
             data.SelectCommand.Parameters.AddWithValue("@t2", EndDatePicker.Value);
             DataTable dt = new DataTable();
             data.Fill(dt);
             SatinAlmaGecmisiDataGrid.DataSource = dt;
+            baglanti.baglanti().Close();
+        }
+        //Alım Geçmişi Rapor Butonu
+        private void PdfButton_Click(object sender, EventArgs e)
+        {
+            iTextSharp.text.Document pdfDosya = new iTextSharp.text.Document();
+
+            PdfWriter.GetInstance(pdfDosya, new FileStream("D:Rapor.pdf", FileMode.Create));
+            pdfDosya.Open();
+            pdfDosya.AddCreator("Swap - Modern Dünyada Tarıma Dair Alışveriş");
+            pdfDosya.AddAuthor("Kullanıcı");
+            pdfDosya.AddTitle("SATIN ALMA RAPORU");
+
+            SqlCommand komut = new SqlCommand("Select * From AlimKayitTablosu Where Tarih BETWEEN @t1 and @t2 and KullaniciID=" + Login.UserId, baglanti.baglanti());
+            SqlDataAdapter data = new SqlDataAdapter(komut);
+            data.SelectCommand.Parameters.AddWithValue("@t1", StartDatePicker.Value);
+            data.SelectCommand.Parameters.AddWithValue("@t2", EndDatePicker.Value);
+            SqlDataReader oku = komut.ExecuteReader();
+            
+            string id, tarih, miktar, alimtutar, komisyon, metin;
+            metin = "KullaniciID / Tarih / Miktar / AlimTutari / UygulamaKomsiyon \n";
+            Paragraph eklenecekveri = new Paragraph();
+            pdfDosya.Add(new Paragraph(metin));
+            while (oku.Read())
+            {  
+                id=Convert.ToString(oku["KullaniciID"]);
+                tarih=Convert.ToString(oku["Tarih"]);
+                miktar=Convert.ToString(oku["Miktar"]);
+                alimtutar=Convert.ToString(oku["AlimTutari"]);
+                komisyon = Convert.ToString(oku["UygulamaKomisyonu"]);
+                metin = id + "  -  " + tarih + "  -  " + miktar + "  -  " + alimtutar + "  -  " + komisyon + "\n";
+                pdfDosya.Add(new Paragraph(metin));
+            }
+            pdfDosya.Close();
+            baglanti.baglanti().Close();
         }
 
         //Ürün Satın Al >> Ürün Satın Alma, Ürünlerin Sistemden Düşülmesi, Para Değerlerinin Düzeltilmesi İşlemleri.
@@ -233,7 +273,7 @@ namespace Swap
                         //Kullanıcının Satın Alma İşlemini Kayıt Altına Alıyoruz
                         komut = new SqlCommand("insert into AlimKayitTablosu(KullaniciID,Tarih,UrunID,Miktar,AlimTutari,UygulamaKomisyonu)" + "values(@p0,@p1,@p2,@p3,@p4,@p5)", baglanti.baglanti());
                         komut.Parameters.AddWithValue("@p0", Login.UserId);
-                        komut.Parameters.AddWithValue("@p1", DateTime.Now.ToShortDateString());
+                        komut.Parameters.AddWithValue("@p1", DateTime.Now.ToLongDateString());
                         komut.Parameters.AddWithValue("@p2", int.Parse(item.UrunId.ToString()));
                         komut.Parameters.AddWithValue("@p3", Convert.ToInt32(miktar));
                         komut.Parameters.AddWithValue("@p4", int.Parse(item.Fiyat.ToString()));
@@ -319,10 +359,9 @@ namespace Swap
                 MessageBox.Show("İşleminiz Başarıyla Gerçekleşti. Verdiğiniz Bilgiler İçin Teşekkür Ederiz." + Environment.NewLine + "En Kısa Sürede Talebiniz Hakkında Dönüş Sağlayacağız.");
                 baglanti.baglanti().Close();
             }
-
-            TalepleriOku();
-
+            //TalepleriOku();
         }
+
         public void TalepleriOku()
         {
             int TalepID, KullaniciID, UrunID, MiktarKG, Fiyat, isActive;
@@ -429,5 +468,7 @@ namespace Swap
             komut.ExecuteNonQuery();
             baglanti.baglanti().Close();
         }
+
+      
     }
 }

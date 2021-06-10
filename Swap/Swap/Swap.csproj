@@ -36,6 +36,9 @@
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>D:\Kurulum Dosyaları\Program Kurulum Dosyaları\Bnfu_1.5.3_crack\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\..\Downloads\itextsharp-5.0.5-dll\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -80,6 +80,7 @@ namespace Swap
             this.SatinAlmaGecmisiGB = new System.Windows.Forms.GroupBox();
             this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.PdfButton = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -112,7 +113,7 @@ namespace Swap
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Quality = 10;
-            this.MenuPanel.Size = new System.Drawing.Size(202, 483);
+            this.MenuPanel.Size = new System.Drawing.Size(202, 475);
             this.MenuPanel.TabIndex = 0;
             // 
             // SatinAlmaGecmisiFB
@@ -676,6 +677,7 @@ namespace Swap
             // 
             // SatinAlmaGecmisiGB
             // 
+            this.SatinAlmaGecmisiGB.Controls.Add(this.PdfButton);
             this.SatinAlmaGecmisiGB.Controls.Add(this.EndDatePicker);
             this.SatinAlmaGecmisiGB.Controls.Add(this.StartDatePicker);
             this.SatinAlmaGecmisiGB.Controls.Add(this.DateButton);
@@ -683,7 +685,7 @@ namespace Swap
             this.SatinAlmaGecmisiGB.Controls.Add(this.StartDateLabel);
             this.SatinAlmaGecmisiGB.Controls.Add(this.DateInformatinLabel);
             this.SatinAlmaGecmisiGB.Controls.Add(this.SatinAlmaGecmisiDataGrid);
-            this.SatinAlmaGecmisiGB.Location = new System.Drawing.Point(207, 28);
+            this.SatinAlmaGecmisiGB.Location = new System.Drawing.Point(206, 28);
             this.SatinAlmaGecmisiGB.Name = "SatinAlmaGecmisiGB";
             this.SatinAlmaGecmisiGB.Size = new System.Drawing.Size(676, 443);
             this.SatinAlmaGecmisiGB.TabIndex = 15;
@@ -697,7 +699,7 @@ namespace Swap
             this.EndDatePicker.Name = "EndDatePicker";
             this.EndDatePicker.Size = new System.Drawing.Size(200, 20);
             this.EndDatePicker.TabIndex = 8;
-            this.EndDatePicker.Value = new System.DateTime(2021, 6, 5, 0, 0, 0, 0);
+            this.EndDatePicker.Value = new System.DateTime(2021, 6, 10, 0, 0, 0, 0);
             // 
             // StartDatePicker
             // 
@@ -705,14 +707,24 @@ namespace Swap
             this.StartDatePicker.Name = "StartDatePicker";
             this.StartDatePicker.Size = new System.Drawing.Size(200, 20);
             this.StartDatePicker.TabIndex = 7;
-            this.StartDatePicker.Value = new System.DateTime(2021, 6, 5, 0, 0, 0, 0);
+            this.StartDatePicker.Value = new System.DateTime(2021, 6, 10, 0, 0, 0, 0);
+            // 
+            // PdfButton
+            // 
+            this.PdfButton.Location = new System.Drawing.Point(455, 55);
+            this.PdfButton.Name = "PdfButton";
+            this.PdfButton.Size = new System.Drawing.Size(151, 48);
+            this.PdfButton.TabIndex = 9;
+            this.PdfButton.Text = "Oluşan Geçmiş Raporunu Pdf Olarak Çıktı Al";
+            this.PdfButton.UseVisualStyleBackColor = true;
+            this.PdfButton.Click += new System.EventHandler(this.PdfButton_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(889, 483);
+            this.ClientSize = new System.Drawing.Size(886, 475);
             this.Controls.Add(this.SatinAlmaGecmisiGB);
             this.Controls.Add(this.BuyProductGroupBox);
             this.Controls.Add(this.BilgiLabel);
@@ -800,5 +812,6 @@ namespace Swap
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox TalepKGTB;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button PdfButton;
     }
 }
