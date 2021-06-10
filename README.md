@@ -1,6 +1,10 @@
 # SWAP - *C# ve SQL İle Tarım İle Elde Edilen Ürünlerin Genel Pazar İçerisinde Teklif Üzerine Satış Platformu Projesi*
+![githup](https://user-images.githubusercontent.com/59123356/121570957-15053780-ca2b-11eb-987a-4b7f49935ce9.png)
 <br/>-----------------------------------------------------------------------------------------------------------------------------------------<br/>
-*Aşama 1 >> Gerçekleştirilmesi İstenilen 4 User Story*
+**Amaç**<br/>
+Yazılımın en genel amacı tarım ürünlerine dair bir satış platformu oluşturma düşüncesidir. İnsanların hesaplarına bakiye yükleyerek istediği ürünü sistem üzerinde inceleyip borsa fiyatına göre satın alabildiği veya talep oluşturarak fiyatının düşmesini bekleyebildiği, bunun yanı sıra satıcı olarak ürün satma talebi oluşturabildiğiniz, ödeme alabildiğiniz, birden fazla ürün satımı gerçekleştirebildiğiniz bir satış uygulması.
+<br/>-----------------------------------------------------------------------------------------------------------------------------------------<br/>
+**Aşama 1 >> Gerçekleştirilmesi İstenilen 4 User Story**
 * User Story-1
   a. Sisteme Kayıt (Kullanıcılar aşağıdaki bilgileri yazılıma girerek sisteme kayıt olacaklardır.)
   b. (Kullanıcı Bilgilerinin sisteme eklenmesi [Ad, Soyad, Kullanıcı Adı, Password, TC Kimlik No, Telefon, Email, Adres] )
@@ -11,7 +15,7 @@
 * User Story-4
   e. Fiyatın oluşması ile alıcının hesabına parasının olması ve satıcının hesabına ise ürünün olması lazım. Eğer alıcının almak istediği ürün var ise otomatik olarak alım işleminin gerçekleşmesi lazım.
   
-*Aşama 2 >> Gerçekleştirilmesi İstenilen 4 User Story*
+**Aşama 2 >> Gerçekleştirilmesi İstenilen 4 User Story**
 * User Story-1
   f. Alıcı bir fiyat belirleyebilecek eğer istediği fiyattan satan kişi olmaz ise işlem gerçekleşmeyecek. İşlem ancak alıcının verdiği fiyattan ürün satan bir kişi olana kadar bekleyecek.)
 * User Story-2
@@ -21,24 +25,23 @@
   (.Json/.Xml/vb bir yerden veri seçilebilir.) En az 3 para birimi sistem tarafından kabul edilsin (Örnek sterlin, İsviçre frank, Euro).
 * User Story-4
   j. Muhasebe_kullanıcısı aracılık ücreti yüzde 1 olsun ve bu tutar alıcıdan tahsil edilsin.
-<br/<-----------------------------------------------------------------------------------------------------------------------------------------<br/>
-*#Yazılımın Bulundurduğu Ekranlar<br/>*
+<br/>-----------------------------------------------------------------------------------------------------------------------------------------<br/>
+**#Yazılımın Bulundurduğu Ekranlar<br/>**
 1>Login<br/> 2>Kayıt Ol<br/> 3>Ana Menü<br/> 4>Admin<br/>
 <br/>-----------------------------------------------------------------------------------------------------------------------------------------<br/>
 * 1> Login<br/>
-  Login içerisinden Kullanıcı Adı, Şifre, Kullanıcı Tipi(Admin, Kullanıcı) bilgilerinin kontrolü gerçekleştirilir. Bunun doğrultusunda form geçişi sağlanır. <br/>
-  Bunun yanı sıra "Giriş Yap" butonunun altında "Kayıt Ol" butonu yer almaktadır.<br/>
+  Login içerisinden Kullanıcı Adı, Şifre, Kullanıcı Tipi(Admin, Kullanıcı) bilgilerinin kontrolü gerçekleştirilir. Bunun doğrultusunda form geçişi sağlanır. Bunun yanı sıra "Giriş Yap" butonunun altında "Kayıt Ol" butonu yer almaktadır.<br/>
 * 2> Kayıt Ol<br/>
   Kayıt olma ekranı içerisinde genel kullanıcı bilgileri alınarak sisteme eklenir. Bilgiler de herhangi bir şekilde "Null" değer girilemez.<br/>
 * 3> Ana Menü<br/>
-  Genel anlamda ilk gelişinde "Bakiye" bilgisi sol yanda yer alır,bunun yanı sıra  Hesap, Ürün Satın Al butonları da bu kısımda yer alır.<br/>
-  Seçilen işleme göre bileşenlerin görünürlüğü değişmektedir. "Hesap" butonuna tıklandığında sisteme onay başvuruları ile ilgili bileşenler görünürlük kazanır. <br/>
-  Ve yapılabilecek olan "Para Ekle" ve "Ürün Ekle" başvuruları yapılabilir.<br/>
-  "Ürün Satın Al" butonu ile ise ürün seçimine göre genel ürün fiyatlarını görüntüleyebileceğimiz ve ayrıca altında satın alma işlemi gerçekleştirebileceğimiz bir ekran bizleri karşılar.<br/>
+  Genel anlamda ilk ekranın yüklenişinde "Bakiye" bilgisi sol yanda yer alan ve menü bulunduran bir alan sizleri karşılar. Bunun yanı sıra Hesap, Ürün Satın Al, Satın Alma Geçmişi butonları da bu kısımda yer alır.<br/>
+  Seçilen işleme göre bileşenlerin görünürlüğü değişmektedir. "Hesap" butonuna tıklandığında sisteme onay başvuruları ile ilgili bileşenler görünürlük kazanır. Ve yapılabilecek olan "Para Ekle" ve "Ürün Ekle" başvuruları yapılabilir.<br/>
+  "Ürün Satın Al" butonu ile ise ürün seçimine göre genel ürün fiyatlarını görüntüleyebileceğimiz ayrıca altında satın alma ve talep oluşturma işlemlerini gerçekleştirebileceğimiz bir ekran bizleri karşılar.<br/>
+  "Satın Alma Geçmişi" butonuna tıklandığında ise iki adet zaman tarihi seçerek eski alımlarınızı görüntüleyebilidğiniz ayrıca görüntülediğiniz raporun çıktısını alabileceğiniz butonlar bulunur.<br/>
 * 4> Admin<br/>
   Onay başvurusu yapılan değerler ve kullanıcıların verileri tablo aracılığıyla görüntülenir. Alttaki tablolar yardımı ile istenirse kullanıcıların ürünleri ve para miktarları değiştirilebilir.<br/>
 <br/>-----------------------------------------------------------------------------------------------------------------------------------------<br/>
-  *Yararlanılan Kaynaklar:<br/>*
+  **Yararlanılan Kaynaklar:<br/>**
   *Yararlanılan Aşama 1 Kaynaklar:<br/>*
   Murat Yücedağ C# Eğitim Kitabı<br/>
   Murat Yücedağ SQL Ders Videoları >> https://www.youtube.com/playlist?list=PLKnjBHu2xXNP6Qa6u8GLawPnzo1brHZPP<br/>
