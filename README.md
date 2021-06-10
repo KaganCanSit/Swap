@@ -15,12 +15,12 @@
 * User Story-1
   a. Alıcı bir fiyat belirleyebilecek eğer istediği fiyattan satan kişi olmaz ise işlem gerçekleşmeyecek. İşlem ancak alıcının verdiği fiyattan ürün satan bir kişi olana kadar bekleyecek.)
 * User Story-2
-  b.Kullanıcı seçtiği tarih aralığında yaptığı alış ve/veya satışlara ilişkin bir rapor oluşturabilecek (Oluşturulan rapor [.csv yada .xlsx yada .dat yada.pdf] uzantılı bir formatta dönüştürülecek.)
+  b. Kullanıcı seçtiği tarih aralığında yaptığı alış ve/veya satışlara ilişkin bir rapor oluşturabilecek (Oluşturulan rapor [.csv yada .xlsx yada .dat yada.pdf] uzantılı bir formatta dönüştürülecek.)
 * User Story-3
-  c.(Alıcı sisteme sadece TL değil farklı para tiplerinden de yükleme yapabilecek. Yüklenen bu tutar adminin onay verdiği tarihteki döviz kuru üzerinden Tl’ye çevrilerek sisteme aktarılacak.) 
+  c. (Alıcı sisteme sadece TL değil farklı para tiplerinden de yükleme yapabilecek. Yüklenen bu tutar adminin onay verdiği tarihteki döviz kuru üzerinden Tl’ye çevrilerek sisteme aktarılacak.) 
   (.Json/.Xml/vb bir yerden veri seçilebilir.) En az 3 para birimi sistem tarafından kabul edilsin (Örnek sterlin, İsviçre frank, Euro).
 * User Story-4
-  d.Muhasebe_kullanıcısı aracılık ücreti yüzde 1 olsun ve bu tutar alıcıdan tahsil edilsin.
+  d. Muhasebe_kullanıcısı aracılık ücreti yüzde 1 olsun ve bu tutar alıcıdan tahsil edilsin.
 
 *#Yazılımın Bulundurduğu Ekranlar<br/>*
 1>Login<br/> 2>Kayıt Ol<br/> 3>Ana Menü<br/> 4>Admin<br/>
