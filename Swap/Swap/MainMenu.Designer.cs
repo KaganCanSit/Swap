@@ -78,9 +78,9 @@ namespace Swap
             this.EndDateLabel = new System.Windows.Forms.Label();
             this.DateButton = new System.Windows.Forms.Button();
             this.SatinAlmaGecmisiGB = new System.Windows.Forms.GroupBox();
+            this.PdfButton = new System.Windows.Forms.Button();
             this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.PdfButton = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -113,7 +113,7 @@ namespace Swap
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Quality = 10;
-            this.MenuPanel.Size = new System.Drawing.Size(202, 475);
+            this.MenuPanel.Size = new System.Drawing.Size(202, 476);
             this.MenuPanel.TabIndex = 0;
             // 
             // SatinAlmaGecmisiFB
@@ -377,7 +377,6 @@ namespace Swap
             this.TalepOlusturBtn.TabIndex = 22;
             this.TalepOlusturBtn.Text = "Talep Oluştur";
             this.TalepOlusturBtn.UseVisualStyleBackColor = true;
-            this.TalepOlusturBtn.Click += new System.EventHandler(this.TalepOlusturBtn_Click);
             // 
             // label12
             // 
@@ -693,6 +692,16 @@ namespace Swap
             this.SatinAlmaGecmisiGB.Text = "SatinAlmaGecmisiGB";
             this.SatinAlmaGecmisiGB.Visible = false;
             // 
+            // PdfButton
+            // 
+            this.PdfButton.Location = new System.Drawing.Point(455, 55);
+            this.PdfButton.Name = "PdfButton";
+            this.PdfButton.Size = new System.Drawing.Size(151, 48);
+            this.PdfButton.TabIndex = 9;
+            this.PdfButton.Text = "Oluşan Geçmiş Raporunu Pdf Olarak Çıktı Al";
+            this.PdfButton.UseVisualStyleBackColor = true;
+            this.PdfButton.Click += new System.EventHandler(this.PdfButton_Click);
+            // 
             // EndDatePicker
             // 
             this.EndDatePicker.Location = new System.Drawing.Point(110, 87);
@@ -709,22 +718,12 @@ namespace Swap
             this.StartDatePicker.TabIndex = 7;
             this.StartDatePicker.Value = new System.DateTime(2021, 6, 10, 0, 0, 0, 0);
             // 
-            // PdfButton
-            // 
-            this.PdfButton.Location = new System.Drawing.Point(455, 55);
-            this.PdfButton.Name = "PdfButton";
-            this.PdfButton.Size = new System.Drawing.Size(151, 48);
-            this.PdfButton.TabIndex = 9;
-            this.PdfButton.Text = "Oluşan Geçmiş Raporunu Pdf Olarak Çıktı Al";
-            this.PdfButton.UseVisualStyleBackColor = true;
-            this.PdfButton.Click += new System.EventHandler(this.PdfButton_Click);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(886, 475);
+            this.ClientSize = new System.Drawing.Size(887, 476);
             this.Controls.Add(this.SatinAlmaGecmisiGB);
             this.Controls.Add(this.BuyProductGroupBox);
             this.Controls.Add(this.BilgiLabel);
