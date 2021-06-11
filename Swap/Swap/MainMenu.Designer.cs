@@ -46,7 +46,7 @@ namespace Swap
             this.ParaEkleTB = new System.Windows.Forms.TextBox();
             this.BuyProductGroupBox = new System.Windows.Forms.GroupBox();
             this.TalepFiyatTB = new System.Windows.Forms.TextBox();
-            this.TalepOlusturBtn = new System.Windows.Forms.Button();
+            this.TalepOlusturButton = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.TalepKGTB = new System.Windows.Forms.TextBox();
@@ -81,6 +81,7 @@ namespace Swap
             this.PdfButton = new System.Windows.Forms.Button();
             this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -113,7 +114,7 @@ namespace Swap
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Quality = 10;
-            this.MenuPanel.Size = new System.Drawing.Size(202, 476);
+            this.MenuPanel.Size = new System.Drawing.Size(202, 478);
             this.MenuPanel.TabIndex = 0;
             // 
             // SatinAlmaGecmisiFB
@@ -343,7 +344,7 @@ namespace Swap
             // BuyProductGroupBox
             // 
             this.BuyProductGroupBox.Controls.Add(this.TalepFiyatTB);
-            this.BuyProductGroupBox.Controls.Add(this.TalepOlusturBtn);
+            this.BuyProductGroupBox.Controls.Add(this.TalepOlusturButton);
             this.BuyProductGroupBox.Controls.Add(this.label12);
             this.BuyProductGroupBox.Controls.Add(this.label11);
             this.BuyProductGroupBox.Controls.Add(this.TalepKGTB);
@@ -369,14 +370,15 @@ namespace Swap
             this.TalepFiyatTB.Size = new System.Drawing.Size(121, 20);
             this.TalepFiyatTB.TabIndex = 23;
             // 
-            // TalepOlusturBtn
+            // TalepOlusturButton
             // 
-            this.TalepOlusturBtn.Location = new System.Drawing.Point(455, 211);
-            this.TalepOlusturBtn.Name = "TalepOlusturBtn";
-            this.TalepOlusturBtn.Size = new System.Drawing.Size(100, 23);
-            this.TalepOlusturBtn.TabIndex = 22;
-            this.TalepOlusturBtn.Text = "Talep Oluştur";
-            this.TalepOlusturBtn.UseVisualStyleBackColor = true;
+            this.TalepOlusturButton.Location = new System.Drawing.Point(455, 211);
+            this.TalepOlusturButton.Name = "TalepOlusturButton";
+            this.TalepOlusturButton.Size = new System.Drawing.Size(100, 23);
+            this.TalepOlusturButton.TabIndex = 22;
+            this.TalepOlusturButton.Text = "Talep Oluştur";
+            this.TalepOlusturButton.UseVisualStyleBackColor = true;
+            this.TalepOlusturButton.Click += new System.EventHandler(this.TalepOlusturButton_Click);
             // 
             // label12
             // 
@@ -684,7 +686,7 @@ namespace Swap
             this.SatinAlmaGecmisiGB.Controls.Add(this.StartDateLabel);
             this.SatinAlmaGecmisiGB.Controls.Add(this.DateInformatinLabel);
             this.SatinAlmaGecmisiGB.Controls.Add(this.SatinAlmaGecmisiDataGrid);
-            this.SatinAlmaGecmisiGB.Location = new System.Drawing.Point(206, 28);
+            this.SatinAlmaGecmisiGB.Location = new System.Drawing.Point(206, 29);
             this.SatinAlmaGecmisiGB.Name = "SatinAlmaGecmisiGB";
             this.SatinAlmaGecmisiGB.Size = new System.Drawing.Size(676, 443);
             this.SatinAlmaGecmisiGB.TabIndex = 15;
@@ -718,12 +720,23 @@ namespace Swap
             this.StartDatePicker.TabIndex = 7;
             this.StartDatePicker.Value = new System.DateTime(2021, 6, 10, 0, 0, 0, 0);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(651, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(887, 476);
+            this.ClientSize = new System.Drawing.Size(893, 478);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.SatinAlmaGecmisiGB);
             this.Controls.Add(this.BuyProductGroupBox);
             this.Controls.Add(this.BilgiLabel);
@@ -806,11 +819,12 @@ namespace Swap
         private System.Windows.Forms.DateTimePicker EndDatePicker;
         private System.Windows.Forms.DateTimePicker StartDatePicker;
         private System.Windows.Forms.TextBox TalepFiyatTB;
-        private System.Windows.Forms.Button TalepOlusturBtn;
+        private System.Windows.Forms.Button TalepOlusturButton;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox TalepKGTB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button PdfButton;
+        private System.Windows.Forms.Button button1;
     }
 }
