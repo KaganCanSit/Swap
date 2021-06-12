@@ -147,7 +147,7 @@ namespace Swap
             this.PassTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PassTextBox.Name = "PassTextBox";
             this.PassTextBox.Size = new System.Drawing.Size(148, 27);
-            this.PassTextBox.TabIndex = 3;
+            this.PassTextBox.TabIndex = 1;
             this.PassTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // NameTextBox
@@ -166,7 +166,7 @@ namespace Swap
             this.NameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(148, 27);
-            this.NameTextBox.TabIndex = 4;
+            this.NameTextBox.TabIndex = 1;
             this.NameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // LoginImageButton
@@ -248,6 +248,7 @@ namespace Swap
             // 
             // Login
             // 
+            this.AccessibleName = "";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

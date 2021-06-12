@@ -38,6 +38,7 @@ namespace Swap
             if (dr.Read())
             {
                 UserId = int.Parse(dr[0].ToString());
+                ParaMik =int.Parse(dr[1].ToString());
                 
                 //Kullanıcı Girişi Yetkisine Göre İşlem Yapacağı Forma İletiyoruz. 
                 if (UserTypeComboBox.Text == "Kullanici")
@@ -50,7 +51,6 @@ namespace Swap
                 else if (UserTypeComboBox.Text == "Admin")
                 {
                     AdminForm adminForm = new AdminForm();
-                  //  adminForm.ParaLabel.Text = (dr[1].ToString());
                     adminForm.Show();
                     this.Hide(); ;
                 }
