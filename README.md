@@ -54,6 +54,7 @@ Yazılımın en genel amacı tarım ürünlerine dair bir satış platformu olu�
                https://www.frmtr.com/c-/4273270-sqlden-veri-cekip-onu-bir-degiskene-atama.html <br/>
                https://www.yazilimkodlama.com/programlama/c-sleep-komutu-ile-bekleme-yapma/<br/>
                http://www.omercebi.com/IcerikDetay-cSharp-ile-pdf-dosyasi-olusturmak-(creating-pdf-with-cSharp-)-107.aspx<br/>
+               https://ilkaygenc.com.tr/c-thread-nedir-nasil-kullanilir/<br/>
   SQL'e Dair >> https://mustafabukulmez.com/2018/08/30/sql-where-komutu-sartli-veri-listeleme/<br/>
                 https://www.mustafabugra.com/development/veritabanindan-veri-cekmek-ve-formatli-bicimde-yazdirmak/<br/>
                 https://caylakyazilimci.com/post/tarih-ve-saat-islemleri<br/>
@@ -61,3 +62,5 @@ Yazılımın en genel amacı tarım ürünlerine dair bir satış platformu olu�
                 https://www.furkanpezek.com.tr/2017/09/sql-yedek-alma-geri-yukleme/<br/>
                 https://social.msdn.microsoft.com/Forums/tr-TR/2db3d002-22f2-458d-a695-65b60ea1e3ea/c-sqlden-birok-verileri-deikene-atamak?forum=csharptr<br/>
                 https://social.msdn.microsoft.com/Forums/tr-TR/ad1a7d02-9b5a-4265-ab03-cbb626677269/sql-2-tarih-arasi-sorgu?forum=sqlservertr<br/>
+                https://docs.microsoft.com/tr-tr/dotnet/framework/data/adonet/sql-server-connection-pooling<br/>
+                https://stackoverflow.com/questions/670774/how-can-i-solve-a-connection-pool-problem-between-asp-net-and-sql-server<br/>
